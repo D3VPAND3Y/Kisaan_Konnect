@@ -1,14 +1,14 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Image from "../assets/image.png";
 import Logo from "../assets/logo.png";
 import GoogleSvg from "../assets/icons8-google.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import "../styles/Login.css";
+import "../styles/SignIn.css";
 
 const SignIn = () => {
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,6 +29,11 @@ const SignIn = () => {
       console.error("Login failed:", err.response ? err.response.data : err.message);
       setError(err.response ? err.response.data.message : "Login failed");
     }
+  };
+
+  const handleGoogleSignIn = () => {
+    // Implement Google Sign-In logic here
+    console.log("Google Sign-In clicked");
   };
 
   return (
@@ -54,7 +59,7 @@ const SignIn = () => {
               />
               <div className="pass-input-div">
                 <input
-                  type={showPassword ? "password" : "text"}
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -74,15 +79,17 @@ const SignIn = () => {
                   <input type="checkbox" id="remember-checkbox" />
                   <label htmlFor="remember-checkbox">Remember Me</label>
                 </div>
-                <a href="#" className="forgot-pass-link">
+                <Link to="/forgot-password" className="forgot-pass-link">
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <div className="login-center-buttons">
-                <button type="submit">Log In</button>
-                <button type="button">
+                <button type="submit" className="login-button">
+                  Log In
+                </button>
+                <button type="button" className="google-button" onClick={handleGoogleSignIn}>
                   <img src={GoogleSvg} alt="Google Icon" />
-                  Log In with Google
+                  <span>Log In with Google</span>
                 </button>
               </div>
             </form>
