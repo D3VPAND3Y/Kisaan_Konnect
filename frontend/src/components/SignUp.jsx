@@ -18,14 +18,12 @@ const Signup = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/user/signup", {
-        fullName: fullName,
+      await axios.post("http://localhost:3000/user/signup", {
+        fullName,
         useremail: email,
-        password: password,
+        password,
       });
 
-      console.log("Signup successful:", response.data);
-      localStorage.setItem("token", response.data.token);
       navigate("/signin");
     } catch (err) {
       console.error("Signup failed:", err.response ? err.response.data : err.message);
@@ -75,12 +73,10 @@ const Signup = () => {
                   <FaEye onClick={() => setShowPassword(!showPassword)} />
                 )}
               </div>
-
               {error && <p style={{ color: "red" }}>{error}</p>}
-
               <div className="signup-center-buttons">
                 <button type="submit">Sign Up</button>
-                <button type="button">
+                <button type="button" className="google-button">
                   <img src={GoogleSvg} alt="Google Icon" />
                   Sign Up with Google
                 </button>

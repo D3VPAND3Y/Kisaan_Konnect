@@ -6,9 +6,7 @@
   margin: 0;
 }
 
-html {
-  font-size: 62.5%;
-}
+
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -151,6 +149,29 @@ form input {
 .signup-bottom-p a:hover {
   text-decoration: underline;
 }
+
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #333;
+    padding: 1.5rem;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .google-button img {
+    width: 25px;
+    margin-right: 10px;
+  }
+
+  .google-button span {
+    font-size: 1.5rem;
+  }
 
 @media (max-width: 900px) {
   .signup-left {
