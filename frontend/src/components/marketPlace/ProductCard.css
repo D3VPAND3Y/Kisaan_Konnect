@@ -1,0 +1,108 @@
+.shop-page-product-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .shop-page-product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .shop-page-product-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  .shop-page-product-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .shop-page-product-price {
+    font-size: 1.2rem;
+    color: #71bf43;
+  }
+
+  .shop-page-product-rating {
+    font-size: 1.2rem;
+  }
+
+  .shop-page-product-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .shop-page-product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .shop-page-product-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+
+  .shop-page-product-name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .shop-page-product-price {
+    font-size: 1.2rem;
+    color: #71bf43;
+  }
+
+  .shop-page-product-rating {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  /* Quantity control styles */
+  .shop-page-product-cart-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .shop-page-product-card:hover .shop-page-product-cart-controls {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .shop-page-quantity {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .shop-page-increment,
+  .shop-page-decrement {
+    background-color: #71bf43;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .shop-page-increment:hover,
+  .shop-page-decrement:hover {
+    background-color: #5fa135;
+  }

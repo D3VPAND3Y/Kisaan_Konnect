@@ -1,0 +1,228 @@
+/* Shop Page Styling */
+
+.shop-page {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.shop-page-hero {
+    text-align: center;
+    color: white;
+    position: relative;
+    height: 300px;
+    background: url('../../assets/ShopImage.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-page-hero-image {
+    display: none; /* Assuming you don't want to display this image directly */
+}
+
+.shop-page-hero-heading-text {
+    text-align: center;
+}
+
+.shop-page-hero-welcome {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.shop-page-hero-heading {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.shop-page-content {
+    display: flex;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.shop-page-filters {
+    width: 25%;
+    padding-right: 20px;
+}
+
+.shop-page-filter-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.shop-page-filter-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.shop-page-filter-section input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.shop-page-filter-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.shop-page-filter-section .filter-checkbox {
+    margin-bottom: 10px;
+}
+
+.shop-page-filter-section .filter-checkbox label {
+    font-size: 1rem;
+}
+
+.shop-page-filter-apply-button {
+    padding: 10px 20px;
+    background-color: #71bf43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-page-filter-apply-button:hover {
+    background-color: #5fa135;
+}
+
+.shop-page-products {
+    width: 75%;
+}
+
+.shop-page-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.shop-page-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.shop-page-pagination-button {
+    background-color: #f9f9f9;
+    border: none;
+    margin: 0 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-page-pagination-button:hover {
+    background-color: #71bf43;
+    color: white;
+}
+
+.shop-page-filter-categories ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.shop-page-filter-categories li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.shop-page-filter-categories li:hover {
+    color: #71bf43;
+}
+
+/* Custom select box styling */
+.shop-page-custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.shop-page-custom-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shop-page-custom-select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.shop-page-custom-select-options.active {
+    display: block;
+}
+
+.shop-page-custom-select-options li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shop-page-custom-select-options li:hover {
+    background-color: #f9f9f9;
+}
+
+.shop-page-filter-categories li {
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .shop-page-filter-categories li:hover {
+    color: #71bf43;
+  }
+
+  .active-category {
+    font-weight: bold;
+    color: #71bf43;
+  }
+
+  .shop-page-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .no-items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust this height to fit your layout */
+  }
+
+  .no-items-message {
+    font-size: 3rem; /* Large font size */
+    font-weight: bold;
+    /* color: #ff4040; Customize the color if needed */
+    text-align: center;
+  }
+
+
