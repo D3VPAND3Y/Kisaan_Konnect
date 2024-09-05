@@ -1,0 +1,169 @@
+// Background image
+.image {
+    width: 100vw;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+    object-fit: cover;
+  }
+  
+  // Container for the entire prediction component
+  .prediction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+  
+    .heading-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      color: white;
+      z-index: 999;
+      background-color: transparent;
+      width: 80%;
+      max-width: 50vw;
+      top: 40rem;
+      left: 50%;
+      transform: translateX(-50%);
+    
+      @media (max-width: 1024px) {
+        top: 18rem;
+        max-width: 60vw;
+      }
+    
+      @media (max-width: 768px) {
+        top: 15rem;
+        max-width: 70vw;
+      }
+    
+      @media (max-width: 480px) {
+        top: 12rem;
+        max-width: 90vw;
+      }
+    }
+  
+    .Heading {
+      font-size: 6rem;
+      font-family: "Covered By Your Grace", cursive;
+    
+      @media (max-width: 1024px) {
+        font-size: 5rem;
+      }
+    
+      @media (max-width: 768px) {
+        font-size: 4rem;
+      }
+    
+      @media (max-width: 480px) {
+        font-size: 3rem;
+      }
+    }
+  
+    .one-stop {
+      font-size: 3rem;
+      font-family: "Covered By Your Grace", cursive;
+  
+      @media (max-width: 1024px) {
+        font-size: 2.5rem;
+      }
+  
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+  
+      @media (max-width: 480px) {
+        font-size: 1.5rem;
+      }
+    }
+  
+    // Wrapper for the dropzone and result area
+    .dropzone-wrapper {
+      margin-top: 2rem;
+      text-align: center;
+    }
+  
+    // Styling for the dropzone
+    .dropzone {
+      max-width: 500px;
+      padding: 2rem;
+      border: 2px dashed #ffffff;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1.2rem;
+      color: #2b2d42;
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+  
+      &.drag-active {
+        background-color: rgba(212, 226, 212, 0.7);
+        border-color: #2a9d8f;
+      }
+  
+      p {
+        margin: 0;
+      }
+    }
+  
+    .image-preview {
+      margin-top: 2rem;
+      text-align: center;
+  
+      h3 {
+        font-size: 1.5rem;
+        color: white;
+      }
+  
+      img {
+        max-width: 300px;
+        max-height: 300px;
+        margin-top: 1rem;
+        border-radius: 12px;
+        border: 2px solid #2a9d8f;
+        object-fit: cover;
+      }
+    }
+  
+    .loading-text {
+      font-size: 1.2rem;
+      color: #f77f00;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+  
+    .error-text {
+      font-size: 1.2rem;
+      color: #d62828;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+  
+    .result-container {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 2px solid #2a9d8f;
+  
+      h2 {
+        font-size: 1.8rem;
+        color: #2b2d42;
+        margin-bottom: 0.5rem;
+      }
+  
+      .prediction-result {
+        font-size: 1.6rem;
+        color: #2a9d8f;
+        font-weight: 700;
+      }
+    }
+  }
