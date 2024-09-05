@@ -77,7 +77,7 @@ form input {
   border: none;
   border-bottom: 1px solid #000;
   outline: none;
-  padding-right: 2.5rem; /* To create space for the password toggle icon */
+  padding-right: 2.5rem;
 }
 
 .pass-input-div {
@@ -129,7 +129,7 @@ form input {
   flex-direction: column;
   width: 100%;
   row-gap: 1rem;
-  margin-top: 20px; /* Moved margin-top from media query for consistency */
+  margin-top: 20px;
 }
 
 .login-center-buttons button {
@@ -147,9 +147,9 @@ form input {
 }
 
 .login-center-buttons button:nth-child(1):hover {
-  background-color: #fff;
+  background-color: #f0f0f0;
   color: #333;
-  border: 3px solid #000;
+  border: .3px solid #000;
 }
 
 .login-center-buttons button:nth-child(2) {

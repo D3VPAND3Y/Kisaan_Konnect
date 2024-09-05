@@ -1,12 +1,12 @@
 .image {
     width: 100vw;
-    position: absolute;
-    z-index: 1;
+    // position: absolute;
+    // z-index: 1;
     -webkit-user-drag: none;
     user-select: none;
     object-fit: cover;
   }
-  
+
   .heading-text {
     display: flex;
     flex-direction: column;
@@ -20,59 +20,59 @@
     top: 25rem;
     left: 50%;
     transform: translateX(-50%); /* Center the text horizontally */
-  
+
     @media (max-width: 768px) {
       top: 20rem;
       max-width: 50vw; /* Adjust for smaller screens */
     }
-  
+
     @media (max-width: 480px) {
       top: 15rem;
       max-width: 70vw; /* Further adjust for mobile screens */
     }
   }
-  
+
   .Heading {
     font-size: 7rem; /* Original size for large screens */
     font-family: "Covered By Your Grace", cursive;
     font-weight: 400;
-  
+
     @media (max-width: 768px) {
       font-size: 5rem; /* Scale down on tablets */
     }
-  
+
     @media (max-width: 480px) {
       font-size: 3rem; /* Scale down further on mobile */
     }
   }
-  
+
   .one-stop {
     font-size: 4rem; /* Original size for large screens */
     font-family: "Covered By Your Grace", cursive;
-  
+
     @media (max-width: 768px) {
       font-size: 3rem; /* Scale down on tablets */
     }
-  
+
     @media (max-width: 480px) {
       font-size: 2rem; /* Scale down further on mobile */
     }
   }
-  
+
   .welcome {
     font-size: 1.5rem; /* Original size */
     font-family: "Manrope", sans-serif;
     font-weight: 400;
-  
+
     @media (max-width: 768px) {
       font-size: 1.3rem; /* Scale down on tablets */
     }
-  
+
     @media (max-width: 480px) {
       font-size: 1.1rem; /* Scale down further on mobile */
     }
   }
-  
+
   .about-button {
     font-size: 1.5rem; /* Original size */
     font-family: "Manrope", sans-serif;
@@ -85,13 +85,13 @@
     cursor: pointer;
     margin-top: 2rem;
     width: 50%; /* Make button width flexible */
-  
+
     @media (max-width: 768px) {
       font-size: 1.3rem;
       padding: 0.8rem 1.5rem;
       width: 60%;
     }
-  
+
     @media (max-width: 480px) {
       font-size: 1.2rem;
       padding: 0.7rem 1.2rem;
