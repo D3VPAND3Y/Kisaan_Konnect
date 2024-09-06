@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./Home.css";
 import HeroImg from "../../assets/ShopImage.png";
 import { ProductCard } from "./ProductCard";
 import MARKET_DATA from "../../utils/data";
 import CartIcon from "./CartIcon";
+import { CartContext } from "../../contexts/cart.context";
 
 export const Home = () => {
   const [priceRange, setPriceRange] = useState(500);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(MARKET_DATA);
+  const { cartItems, addItemToCart } = useContext(CartContext);
 
   const handlePriceRangeChange = (e) => {
     setPriceRange(e.target.value);
@@ -47,7 +49,7 @@ export const Home = () => {
 
   return (
     <div className="shop-page">
-    <CartIcon/>
+      <CartIcon />
       <div className="shop-page-hero">
         <div>
           <img
@@ -98,24 +100,24 @@ export const Home = () => {
         </aside>
 
         <main className="shop-page-products">
-  {filteredProducts.length === 0 || filteredProducts.every((category) => category.items.length === 0) ? (
-    <div className="no-items-container">
-      <h3 className="no-items-message">No Items Available</h3>
-    </div>
-  ) : (
-    filteredProducts.map((category) => (
-      <section key={category.title}>
-        <h2 className="shop-page-category-title">{category.title}</h2>
-        <div className="shop-page-products-grid">
-          {category.items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-    ))
-  )}
-</main>
-
+          {filteredProducts.length === 0 ||
+          filteredProducts.every((category) => category.items.length === 0) ? (
+            <div className="no-items-container">
+              <h3 className="no-items-message">No Items Available</h3>
+            </div>
+          ) : (
+            filteredProducts.map((category) => (
+              <section key={category.title}>
+                <h2 className="shop-page-category-title">{category.title}</h2>
+                <div className="shop-page-products-grid">
+                  {category.items.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </section>
+            ))
+          )}
+        </main>
       </div>
     </div>
   );

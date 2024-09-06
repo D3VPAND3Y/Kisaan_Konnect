@@ -1,33 +1,46 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import Tomato from "../../assets/tomato.png";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/cart.context";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product }) => {
   const { id, name, price, image, rating } = product;
   const [quantity, setQuantity] = useState(0);
+  const { addItemToCart, removeItemToCart, cartCount } = useContext(CartContext);
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
+    addItemToCart(product);
+    console.log(cartCount);
+    console.log(product);
   };
 
   const handleDecrement = () => {
-    if (quantity > 0) setQuantity((prev) => prev - 1);
+    if (quantity > 0) {
+      setQuantity((prev) => prev - 1);
+      removeItemToCart(product);
+      console.log(cartCount);
+    }
   };
 
   return (
     <div className="shop-page-product-card">
       <img src={Tomato} alt={name} className="shop-page-product-image" />
       <h3 className="shop-page-product-name">{name}</h3>
-      <p className="shop-page-product-price">${price.toFixed(2)}</p>
+      <p className="shop-page-product-price">₹{price.toFixed(2)}</p>
       <div className="shop-page-product-rating">
         {Array(rating).fill("⭐")}
       </div>
 
       <div className="shop-page-product-cart-controls">
-        <button onClick={handleDecrement} className="shop-page-decrement">-</button>
+        <button onClick={handleDecrement} className="shop-page-decrement">
+          -
+        </button>
         <span className="shop-page-quantity">{quantity}</span>
-        <button onClick={handleIncrement} className="shop-page-increment">+</button>
+        <button onClick={handleIncrement} className="shop-page-increment">
+          +
+        </button>
       </div>
     </div>
   );
