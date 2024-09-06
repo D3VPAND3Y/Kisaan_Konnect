@@ -7,12 +7,21 @@ const path = require('path');
 const onnx = require('onnxruntime-node');
 const dotenv = require("dotenv");
 const sharp = require('sharp');
+const {db} = require('./db');
+const {userRoute} = require('./controllers/auth_controller')
 
 dotenv.config();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+    }
+);
+
+app.use("/user", userRoute);
 
 // File Upload Configuration using Multer
 const upload = multer({ dest: 'frontend/src/models' }); // Destination folder for file uploads

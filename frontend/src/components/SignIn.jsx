@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Image from "../assets/image.png";
 import Logo from "../assets/logo.png";
 import GoogleSvg from "../assets/icons8-google.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { UserContext } from "../contexts/user.context"; // Import UserContext
 import "../styles/SignIn.css";
 
 const SignIn = () => {
@@ -13,6 +14,8 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const { setToken } = useContext(UserContext); // Get the setToken function from context
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -23,7 +26,11 @@ const SignIn = () => {
       });
 
       console.log("Login successful:", response.data);
-      localStorage.setItem("token", response.data.token);
+
+      // Store the JWT token in the context
+      setToken(response.data.token);
+
+      // Navigate to dashboard after successful login
       navigate("/dashboard");
     } catch (err) {
       console.error("Login failed:", err.response ? err.response.data : err.message);
@@ -32,7 +39,6 @@ const SignIn = () => {
   };
 
   const handleGoogleSignIn = () => {
-    // Implement Google Sign-In logic here
     console.log("Google Sign-In clicked");
   };
 

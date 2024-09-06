@@ -41,6 +41,7 @@ userRoute.post("/signup", async (req, res) => {
             {
                 userId: user._id,
                 email: req.body.useremail,
+                fullName: user.fullName
             },
             process.env.JWT_SECRET
         );
@@ -101,6 +102,7 @@ userRoute.post("/signin", async (req, res) => {
             {
                 userId: user._id,
                 email: req.body.useremail,
+                fullName: user.fullName,
             },
             process.env.JWT_SECRET
         );
