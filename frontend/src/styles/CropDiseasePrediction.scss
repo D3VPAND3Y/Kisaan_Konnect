@@ -5,6 +5,8 @@
     -webkit-user-drag: none;
     user-select: none;
     object-fit: cover;
+    position: absolute;
+    top:0;
   }
   
   // Container for the entire prediction component
@@ -27,7 +29,7 @@
       background-color: transparent;
       width: 80%;
       max-width: 50vw;
-      top: 40rem;
+      top: 20rem;
       left: 50%;
       transform: translateX(-50%);
     
