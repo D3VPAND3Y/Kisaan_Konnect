@@ -1,8 +1,15 @@
 import './CartItem.scss';
-import Tomato from '../../assets/tomato.png'
+import Tomato from '../../assets/tomato.png';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cart.context';
 
 const CartItem = ({ cartItem }) => {
   const { imageUrl, price, name, quantity } = cartItem;
+  const { clearItemFromCart } = useContext(CartContext); // Add removeItemFromCart from context
+
+  const handleRemove = () => {
+    clearItemFromCart(cartItem); // Remove the item when clicking on the cross
+  };
 
   return (
     <div className='cart-item-container'>
@@ -10,9 +17,12 @@ const CartItem = ({ cartItem }) => {
       <div className='item-details'>
         <span className='name'>{name}</span>
         <span className='price'>
-          {quantity} x ${price}
+          {quantity} x ₹{price}
         </span>
       </div>
+      <button className='remove-button' onClick={handleRemove}>
+        ✕
+      </button>
     </div>
   );
 };
