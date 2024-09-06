@@ -7,20 +7,17 @@ import "./ProductCard.css";
 export const ProductCard = ({ product }) => {
   const { id, name, price, image, rating } = product;
   const [quantity, setQuantity] = useState(0);
-  const { addItemToCart, removeItemToCart, cartCount } = useContext(CartContext);
+  const { addItemToCart, removeItemToCart } = useContext(CartContext);
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
     addItemToCart(product);
-    console.log(cartCount);
-    console.log(product);
   };
 
   const handleDecrement = () => {
     if (quantity > 0) {
       setQuantity((prev) => prev - 1);
       removeItemToCart(product);
-      console.log(cartCount);
     }
   };
 

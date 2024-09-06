@@ -6,7 +6,6 @@ const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
-  console.log(existingCartItem);
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
@@ -106,7 +105,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const addItemToCart = (productToAdd) => {
-    console.log(productToAdd);
     const newCartItems = addCartItem(cartItems, productToAdd);
     updateCartItemsReducer(newCartItems);
   };

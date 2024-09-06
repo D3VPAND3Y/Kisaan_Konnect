@@ -11,6 +11,7 @@ import FertilizerPrediction from './components/FertilizerPrediction';
 import { Home } from './components/marketPlace/Home';
 import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
+import Checkout from './components/marketPlace/Checkout';
 
 function App() {
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
@@ -33,6 +34,7 @@ function App() {
         <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
         <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
         <Route path="/market-place" element={<Home />} />
+        <Route path='checkout' element={<Checkout />} />
       </Routes>
       {!noNavbarRoutes.includes(window.location.pathname) && <Footer />}
     </Router>

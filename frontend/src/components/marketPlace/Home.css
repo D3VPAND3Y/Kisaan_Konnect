@@ -225,3 +225,43 @@
     text-align: center;
   }
 
+  .shop-page-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 250px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .shop-page-search input {
+    width: 300px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .shop-page-search input:focus {
+    outline: none;
+    border-color: #71bf43;
+  }
+
+  .cart-icon {
+    position: relative;
+  }
+
+  .no-items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+  }
+
+  .no-items-message {
+    font-size: 2rem;
+    color: #555;
+  }
