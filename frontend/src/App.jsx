@@ -10,18 +10,23 @@ import WhatCropToGrow from './components/WhatCropToGrow';
 import FertilizerPrediction from './components/FertilizerPrediction';
 import { Home } from './components/marketPlace/Home';
 import Navbar from '../src/components/Navbar';
+import { useRef } from 'react';
 
 function App() {
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
   const noNavbarRoutes = ['/signin', '/signup', '/forgot-password'];
 
+  const introRef = useRef(null);
+  const servicesRef = useRef(null);
+  const carouselRef = useRef(null);
+
   return (
     <Router>
-      {!noFooterRoutes.includes(window.location.pathname) && <Navbar  />}
+      {!noFooterRoutes.includes(window.location.pathname) && <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef}/>}
       <Routes>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/" element={<SignIn />} />
         <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />

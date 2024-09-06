@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect} from "react";
 import "./Home.css";
 import HeroImg from "../../assets/ShopImage.png";
 import { ProductCard } from "./ProductCard";
@@ -11,6 +11,11 @@ export const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(MARKET_DATA);
   const { cartItems, addItemToCart } = useContext(CartContext);
+
+  //scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0, { behavior: "smooth" });
+  }, []);
 
   const handlePriceRangeChange = (e) => {
     setPriceRange(e.target.value);
