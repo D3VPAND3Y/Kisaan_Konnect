@@ -24,7 +24,6 @@ const Dashboard = ({ introRef, servicesRef, carouselRef}) => {
   );
 };
 
-// Define prop types for validation
 Dashboard.propTypes = {
   heroRef: PropTypes.oneOfType([
     PropTypes.func,

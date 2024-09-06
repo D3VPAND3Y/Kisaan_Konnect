@@ -3,16 +3,16 @@ import "../styles/Herosection.scss";
 
 const Herosection = () => {
   return (
-    <div>
-      <img className="image" src={HeroImg} alt="hero image" />
-      <div className="heading-text">
-        <div className="manrope-font welcome">Welcome to</div>
-        <div className="heading nice-font Heading">Kisaan-Konnect</div>
-        <div className="nice-font one-stop">The One Stop Solution</div>
-        <div className="welcome">
+    <div className="hero-section">
+      <img className="hero-section__image" src={HeroImg} alt="hero image" />
+      <div className="hero-section__heading-text">
+        <div className="hero-section__welcome">Welcome to</div>
+        <div className="hero-section__heading">Kisaan-Konnect</div>
+        <div className="hero-section__one-stop">The One Stop Solution</div>
+        <div className="hero-section__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsa, qui assumenda amet nulla soluta!
         </div>
-        <button className="manrope-font about-button">About us</button>
+        <button className="hero-section__about-button">About us</button>
       </div>
     </div>
   );
