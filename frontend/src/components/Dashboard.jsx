@@ -1,20 +1,14 @@
-import { useRef } from 'react';
 import Herosection from './Herosection';
 import Introduction from './Introduction';
-import Navbar from './Navbar';
 import Services from './Services';
 import Carousel from './Carousel';
+import PropTypes from 'prop-types';
 
-const Dashboard = () => {
-  const heroRef = useRef(null);
-  const introRef = useRef(null);
-  const servicesRef = useRef(null);
-  const carouselRef = useRef(null);
+const Dashboard = ({ introRef, servicesRef, carouselRef}) => {
 
   return (
     <div>
-      <Navbar heroRef={heroRef} introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />
-      <div ref={heroRef}>
+      <div>
         <Herosection />
         </div>
       <div ref={introRef}>
@@ -29,5 +23,26 @@ const Dashboard = () => {
     </div>
   );
 };
+
+// Define prop types for validation
+Dashboard.propTypes = {
+  heroRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+  introRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+  servicesRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+  carouselRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
+};
+
 
 export default Dashboard;
