@@ -1,60 +1,76 @@
-.checkout-item-container {
+.checkout-page-item-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    min-height: 100px;
-    border-bottom: 1px solid darkgrey;
-    padding: 15px 0;
-    font-size: 20px;
     align-items: center;
-
-    span{
-      align-items: center;
-    }
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0; 
+    font-size: 18px;
 
     @media screen and (max-width: 800px) {
-      justify-content: normal;
       font-size: 16px;
-      gap: 5px;
     }
 
     @media screen and (max-width: 500px) {
-      font-size: 15px;
+      font-size: 14px;
     }
 
-    .image-container {
-      width: 23%;
-
+    .checkout-page-image-container {
+      width: 20%;
       padding-right: 15px;
-      overflow: hidden;
 
       img {
         width: 100%;
-        height: 100%;
+        height: auto;
         display: flex;
         justify-content: center;
+        border-radius: 8px;
       }
     }
-    .name,
-    .quantity,
-    .price {
-      width: 23%;
-    }
 
-    .quantity {
+    .checkout-page-item-name,
+    .checkout-page-item-quantity,
+    .checkout-page-item-price {
+      width: 22%;
       display: flex;
+      align-items: center;
+      justify-content: center;
 
-      .arrow {
-        cursor: pointer;
-      }
-
-      .value {
-        margin: 0 10px;
+      @media screen and (max-width: 500px) {
+        width: 20%;
       }
     }
 
-    .remove-button {
+    .checkout-page-item-quantity {
+      display: flex;
+      justify-content: center;
+
+      .checkout-page-arrow {
+        cursor: pointer;
+        font-size: 20px;
+        margin: 0 10px;
+        user-select: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #4baf47;
+        }
+      }
+
+      .checkout-page-value {
+        margin: 0 10px;
+        font-weight: bold;
+      }
+    }
+
+    .checkout-page-remove-button {
       cursor: pointer;
+      font-size: 20px;
+      color: #ff4c4c;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #e50000;
+      }
     }
   }
-

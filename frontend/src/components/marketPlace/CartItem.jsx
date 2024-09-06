@@ -5,10 +5,10 @@ import { CartContext } from '../../contexts/cart.context';
 
 const CartItem = ({ cartItem }) => {
   const { imageUrl, price, name, quantity } = cartItem;
-  const { clearItemFromCart } = useContext(CartContext); // Add removeItemFromCart from context
+  const { clearItemFromCart } = useContext(CartContext); 
 
   const handleRemove = () => {
-    clearItemFromCart(cartItem); // Remove the item when clicking on the cross
+    clearItemFromCart(cartItem);
   };
 
   return (

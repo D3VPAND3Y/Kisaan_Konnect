@@ -1,7 +1,7 @@
 .cart-dropdown-container {
     position: absolute;
     width: 240px;
-    height: 340px; /* Fixed height to contain the dropdown */
+    height: 340px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -10,8 +10,8 @@
     top: 50px;
     right: 25px;
     z-index: 5;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     @media screen and (max-width: 800px) {
       right: 20px;
@@ -31,28 +31,28 @@
     }
 
     .cart-dropdown-items {
-      height: 240px; /* Height to keep the dropdown compact */
+      height: 240px;
       display: flex;
       flex-direction: column;
-      overflow-y: auto; /* Allows vertical scrolling */
+      overflow-y: auto;
       padding-right: 10px;
     }
 
     .cart-dropdown-items::-webkit-scrollbar {
-      width: 6px; /* Narrower scrollbar */
+      width: 6px;
     }
 
     .cart-dropdown-items::-webkit-scrollbar-track {
-      background: #f1f1f1; /* Scrollbar track color */
+      background: #f1f1f1;
     }
 
     .cart-dropdown-items::-webkit-scrollbar-thumb {
-      background-color: #888; /* Scrollbar color */
+      background-color: #888;
       border-radius: 10px;
     }
 
     .cart-dropdown-items::-webkit-scrollbar-thumb:hover {
-      background: #555; /* Scrollbar color on hover */
+      background: #555;
     }
 
     .cart-dropdown-total {
