@@ -14,6 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 9rem;
 }
 
 .shop-page-hero-image {
@@ -233,8 +234,8 @@
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     position: sticky;
-    top: 0;
     z-index: 1000;
+    margin-top: 8rem;
   }
 
   .shop-page-search input {
@@ -242,6 +243,7 @@
     padding: 8px 12px;
     font-size: 1rem;
     border: 1px solid #ccc;
+    top: 3rem;
     border-radius: 5px;
   }
 

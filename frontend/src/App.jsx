@@ -13,9 +13,7 @@ import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
 import Checkout from './components/marketPlace/Checkout';
 
-function Layout({ children }) {
-  const location = useLocation();
-
+function App() {
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
   const noNavbarRoutes = ['/signin', '/signup', '/forgot-password'];
 
@@ -37,20 +35,20 @@ function Layout({ children }) {
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/" element={<SignIn />} />
-          <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
-          <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
-          <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
-          <Route path="/market-place" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </Layout>
+      {!noFooterRoutes.includes(window.location.pathname) && <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef}/>}
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
+        <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
+        <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
+        <Route path="/market-place" element={<Home />} />
+        <Route path='checkout' element={<Checkout />} />
+      </Routes>
+      {!noNavbarRoutes.includes(window.location.pathname) && <Footer />}
     </Router>
   );
 }

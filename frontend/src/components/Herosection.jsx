@@ -1,18 +1,26 @@
 import HeroImg from "../assets/Herosection.png";
 import "../styles/Herosection.scss";
+import { useLanguage } from "../contexts/LanguageContext";
 
-const Herosection = () => {
+const Herosection = ({introRef}) => {
+
+  const { languageStrings } = useLanguage();
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="hero-section">
       <img className="hero-section__image" src={HeroImg} alt="hero image" />
       <div className="hero-section__heading-text">
-        <div className="hero-section__welcome">Welcome to</div>
-        <div className="hero-section__heading">Kisaan-Konnect</div>
-        <div className="hero-section__one-stop">The One Stop Solution</div>
+        <div className="hero-section__welcome">{languageStrings.welcome}</div>
+        <div className="hero-section__heading">{languageStrings.logo}</div>
+        <div className="hero-section__one-stop">{languageStrings.onestop}</div>
         <div className="hero-section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsa, qui assumenda amet nulla soluta!
+          {languageStrings.herodescription}
         </div>
-        <button className="hero-section__about-button">About us</button>
+        <button onClick={() => scrollToSection(introRef)} className="hero-section__about-button">{languageStrings.about}</button>
       </div>
     </div>
   );
