@@ -8,10 +8,10 @@ import { UserProvider } from './contexts/user.context.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
 
-  <CartProvider>
   <UserProvider>
+  <CartProvider>
     <App />
-  </UserProvider>
   </CartProvider>
+  </UserProvider>
   </StrictMode>,
 )

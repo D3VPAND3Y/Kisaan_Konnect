@@ -26,7 +26,6 @@ export const Home = () => {
         console.error("Error fetching products:", error);
       }
     };
-
     fetchProducts();
   }, []);
 
@@ -73,6 +72,8 @@ export const Home = () => {
 
     setFilteredProducts(filteredData);
   };
+
+   console.log(products);
 
   return (
     <div className="shop-page">
@@ -137,8 +138,6 @@ export const Home = () => {
             </ul>
           </div>
         </aside>
-
-        {/* Main Products Section */}
         <main className="shop-page-products">
           {filteredProducts.length === 0 ||
           filteredProducts.every((category) => category.items.length === 0) ? (
@@ -151,7 +150,7 @@ export const Home = () => {
                 <h2 className="shop-page-category-title">{category.title}</h2>
                 <div className="shop-page-products-grid">
                   {category.items.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                    <ProductCard key={category.items._id} product={product} productId={category.items._id} />
                   ))}
                 </div>
               </section>

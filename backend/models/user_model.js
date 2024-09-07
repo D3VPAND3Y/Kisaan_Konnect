@@ -1,5 +1,28 @@
 const mongoose = require('mongoose');
 
+// Define cart item schema
+const cartItemSchema = new mongoose.Schema({
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product',
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: 1
+  },
+  price: {
+    type: Number,
+    required: true
+  }
+});
+
+// Define user schema
 const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -25,6 +48,10 @@ const userSchema = new mongoose.Schema({
   },
   otpExpires: {
     type: Date,
+  },
+  cart: {
+    type: [cartItemSchema], // Array of cart items
+    default: [],
   },
 });
 

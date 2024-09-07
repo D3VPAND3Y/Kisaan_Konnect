@@ -10,6 +10,7 @@ const sharp = require('sharp');
 const {db} = require('./db');
 const {userRoute} = require('./controllers/auth_controller')
 const {productRoute} = require('./controllers/product_route')
+const cartRoute = require('./controllers/cart_route')
 
 
 dotenv.config();
@@ -25,6 +26,9 @@ app.get('/', (req, res) => {
 
 app.use("/user", userRoute);
 app.use("/product", productRoute);
+app.use("/",cartRoute)
+
+
 
 
 

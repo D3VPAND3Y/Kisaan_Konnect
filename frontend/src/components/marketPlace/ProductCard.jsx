@@ -11,6 +11,7 @@ export const ProductCard = ({ product }) => {
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
+    console.log(product);
     addItemToCart(product);
   };
 

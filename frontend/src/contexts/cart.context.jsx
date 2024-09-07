@@ -1,15 +1,17 @@
-import { createContext, useState, useReducer } from 'react';
+import { createContext, useState, useReducer,useContext, useEffect } from 'react';
 
 import { createAction } from '../utils/reducer/reducer.utils';
+import { UserContext } from './user.context';
+import axios from 'axios';
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id
+    (cartItem) => cartItem._id === productToAdd._id
   );
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
+      cartItem._id === productToAdd._id
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
@@ -20,19 +22,22 @@ const addCartItem = (cartItems, productToAdd) => {
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === cartItemToRemove.id
+    (cartItem) => cartItem._id === cartItemToRemove._id
   );
 
   if (existingCartItem.quantity === 1) {
-    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
+    return cartItems.filter((cartItem) => cartItem._id !== cartItemToRemove._id);
   }
 
   return cartItems.map((cartItem) =>
-    cartItem.id === cartItemToRemove.id
+    cartItem._id === cartItemToRemove._id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
 };
+
+const clearCartItem = (cartItems, cartItemToClear) =>
+  cartItems.filter((cartItem) => cartItem._id !== cartItemToClear._id);
 
 const CART_ACTION_TYPES = {
   SET_IS_CART_OPEN: 'SET_IS_CART_OPEN',
@@ -62,9 +67,6 @@ const cartReducer = (state, action) => {
   }
 };
 
-const clearCartItem = (cartItems, cartItemToClear) =>
-  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
-
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
@@ -78,6 +80,28 @@ export const CartContext = createContext({
 
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { token, user } = useContext(UserContext);
+
+  const loadCartItemsFromDB = async () => {
+    if (user && user.userId) {
+      try {
+        const response = await axios.get(`http://localhost:3000/get-cart/${user.userId}`);
+        console.log(response.data.cart);
+        updateCartItemsReducer(response.data.cart);
+
+        dispatch({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: response.data.cart });
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Load cart items from DB when the user logs in or reloads
+    if (user && user.userId) {
+      loadCartItemsFromDB();
+    }
+  }, [user]);
 
   const [{ cartCount, cartTotal, cartItems }, dispatch] = useReducer(
     cartReducer,
@@ -106,18 +130,53 @@ export const CartProvider = ({ children }) => {
 
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
-    updateCartItemsReducer(newCartItems);
+    console.log(productToAdd);
+    if(token && user){
+      axios.post(`http://localhost:3000/add-to-cart`, {productId: productToAdd._id, quantity: 1,userId:user.userId,name:productToAdd.name}, {headers
+      : {Authorization: `Bearer ${token}`}})
+      .then(res => {
+        console.log(res.data);
+        updateCartItemsReducer(newCartItems);
+      })
+      .catch(err => {
+          console.log(err);
+      })
+  }
   };
 
   const removeItemToCart = (cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove);
-    updateCartItemsReducer(newCartItems);
+    if(token && user){
+      axios.post(`http://localhost:3000/remove-from-cart`, {productId: cartItemToRemove._id, userId:user.userId}, {headers
+      : {Authorization: `Bearer ${token}`}})
+      .then(res => {
+        console.log(res.data);
+        updateCartItemsReducer(newCartItems);
+      })
+      .catch(err => {
+          console.log(err);
+      })
   };
+  }
 
   const clearItemFromCart = (cartItemToClear) => {
     const newCartItems = clearCartItem(cartItems, cartItemToClear);
-    updateCartItemsReducer(newCartItems);
+    console.log(cartItemToClear);
+    console.log(cartItems);
+    if(token && user){
+      axios.post(`http://localhost:3000/clear-item-from-cart`, {productId: cartItemToClear._id, userId:user.userId}, {headers
+      : {
+        Authorization: `Bearer ${token}`
+      }})
+      .then(res => {
+        console.log(res.data);
+        updateCartItemsReducer(newCartItems);
+      })
+      .catch(err => {
+          console.log(err);
+      })
   };
+}
 
   const value = {
     isCartOpen,
@@ -126,6 +185,7 @@ export const CartProvider = ({ children }) => {
     removeItemToCart,
     clearItemFromCart,
     cartItems,
+    loadCartItemsFromDB,
     cartCount,
     cartTotal,
   };

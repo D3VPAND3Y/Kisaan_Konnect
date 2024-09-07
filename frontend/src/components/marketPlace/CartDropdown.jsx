@@ -12,6 +12,7 @@ const CartDropdown = () => {
         setIsCartOpen(false);
         navigate("/checkout");
     }
+    console.log(cartItems);
 
     return (
       <div className="cart-dropdown-container">
