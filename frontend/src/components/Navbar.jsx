@@ -1,18 +1,19 @@
-import PropTypes from 'prop-types'; // Import PropTypes
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation for current route
-import { useEffect, useRef } from 'react'; // Import useEffect and useRef for managing scrolling after navigation
+import PropTypes from 'prop-types';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useRef, useContext } from 'react';
 import '../styles/Header.scss';
+import { UserContext } from '../contexts/user.context';
 
 const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   const navigate = useNavigate();
-  const location = useLocation(); // Get current route
-  const sectionToScroll = useRef(null); // Store the section to scroll to after navigation
+  const location = useLocation();
+  const sectionToScroll = useRef(null);
+  const { user, logout } = useContext(UserContext); // Get the user and logout function from context
 
-  // Scroll to the section after navigation
   useEffect(() => {
     if (location.pathname === '/dashboard' && sectionToScroll.current) {
       scrollToSection(sectionToScroll.current);
-      sectionToScroll.current = null; // Reset after scrolling
+      sectionToScroll.current = null;
     }
   }, [location]);
 
@@ -32,7 +33,6 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
 
   const handleAboutClick = () => {
     if (location.pathname !== '/dashboard') {
-      // Navigate to dashboard and then scroll to the section
       sectionToScroll.current = introRef;
       navigate('/dashboard');
     } else {
@@ -58,7 +58,15 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     }
   };
 
-  // Determine if the current route is active
+  const handleLogout = () => {
+    logout(); // Call the logout function to clear user data and token
+    navigate('/signin'); // Navigate to the login page
+  };
+
+  const handleLogin = () => {
+    navigate('/signin'); // Navigate to the login page
+  };
+
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -80,7 +88,16 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
           </div>
         </div>
         <div className="actions">
-          <button className="login-btn">LOGIN</button>
+          {/* Conditionally render login/logout button based on the user context */}
+          {user ? (
+            <button className="logout-btn" onClick={handleLogout}>
+              LOGOUT
+            </button>
+          ) : (
+            <button className="login-btn" onClick={handleLogin}>
+              LOGIN
+            </button>
+          )}
           <div className="language-toggle">
             <span>English</span>
             <input type="checkbox" id="language-switch" />
@@ -96,9 +113,15 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
           >
             Home
           </li>
-          <li className="Navbar__about" onClick={handleAboutClick}>About</li>
-          <li className="Navbar__services" onClick={handleServicesClick}>Services</li>
-          <li className="Navbar__Awareness" onClick={handleAwarenessClick}>Awareness</li>
+          <li className="Navbar__about" onClick={handleAboutClick}>
+            About
+          </li>
+          <li className="Navbar__services" onClick={handleServicesClick}>
+            Services
+          </li>
+          <li className="Navbar__Awareness" onClick={handleAwarenessClick}>
+            Awareness
+          </li>
           <li
             className={isActive('/market-place') ? 'active' : ''}
             onClick={handleMarketPlaceClick}
@@ -111,23 +134,22 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   );
 };
 
-// Define prop types for validation
 Navbar.propTypes = {
   heroRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
   introRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
   servicesRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
   carouselRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
+    PropTypes.shape({ current: PropTypes.any }),
   ]),
 };
 

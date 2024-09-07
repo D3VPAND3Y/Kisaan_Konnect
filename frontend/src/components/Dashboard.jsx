@@ -3,14 +3,9 @@ import Introduction from './Introduction';
 import Services from './Services';
 import Carousel from './Carousel';
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
-import { UserContext } from '../contexts/user.context';
+
 const Dashboard = ({ introRef, servicesRef, carouselRef}) => {
-  const { user } = useContext(UserContext);
-
-  console.log(user);
-
-
+  
   return (
     <div>
       <div>

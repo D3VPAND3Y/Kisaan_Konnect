@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
@@ -13,7 +13,9 @@ import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
 import Checkout from './components/marketPlace/Checkout';
 
-function App() {
+function Layout({ children }) {
+  const location = useLocation();
+
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
   const noNavbarRoutes = ['/signin', '/signup', '/forgot-password'];
 
@@ -22,21 +24,33 @@ function App() {
   const carouselRef = useRef(null);
 
   return (
+    <>
+      {!noNavbarRoutes.includes(location.pathname) && (
+        <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />
+      )}
+      {children}
+      {!noFooterRoutes.includes(location.pathname) && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
     <Router>
-      {!noFooterRoutes.includes(window.location.pathname) && <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef}/>}
-      <Routes>
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/" element={<SignIn />} />
-        <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
-        <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
-        <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
-        <Route path="/market-place" element={<Home />} />
-        <Route path='checkout' element={<Checkout />} />
-      </Routes>
-      {!noNavbarRoutes.includes(window.location.pathname) && <Footer />}
+      <Layout>
+        <Routes>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
+          <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
+          <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
+          <Route path="/market-place" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
