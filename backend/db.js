@@ -9,6 +9,7 @@ const dbConnect = mongoose
     console.log("Connected to db");
   });
 
+
 module.exports = {
   dbConnect,
 };

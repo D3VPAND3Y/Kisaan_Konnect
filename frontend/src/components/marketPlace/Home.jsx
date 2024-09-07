@@ -2,18 +2,33 @@ import { useState, useContext, useEffect } from "react";
 import "./Home.css";
 import HeroImg from "../../assets/ShopImage.png";
 import { ProductCard } from "./ProductCard";
-import MARKET_DATA from "../../utils/data";
 import CartIcon from "./CartIcon";
 import CartDropdown from "./CartDropdown";
 import { CartContext } from "../../contexts/cart.context";
+import axios from "axios";
 
 export const Home = () => {
-  // States for filtering
   const [priceRange, setPriceRange] = useState(500);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(MARKET_DATA);
   const { isCartOpen } = useContext(CartContext);
+
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/product");
+        setProducts(response.data);
+        setFilteredProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -41,16 +56,17 @@ export const Home = () => {
     applyFilters(priceRange, selectedCategory, searchQuery);
   };
 
-  // Apply all filters
+  // Apply all filters to the fetched products
   const applyFilters = (price, category, query) => {
-    const filteredData = MARKET_DATA.map((cat) => ({
+    const filteredData = products.map((cat) => ({
       ...cat,
       items: cat.items.filter((product) => {
         const matchesPrice = product.price <= price;
         const matchesCategory =
           category === "All" || cat.title === category;
-        const matchesSearch =
-          product.name.toLowerCase().includes(query.toLowerCase());
+        const matchesSearch = product.name
+          .toLowerCase()
+          .includes(query.toLowerCase());
         return matchesPrice && matchesCategory && matchesSearch;
       }),
     })).filter((cat) => cat.items.length > 0);
@@ -63,11 +79,7 @@ export const Home = () => {
       {/* Hero Section */}
       <div className="shop-page-hero">
         <div>
-          <img
-            className="shop-page-hero-image"
-            src={HeroImg}
-            alt="hero"
-          />
+          <img className="shop-page-hero-image" src={HeroImg} alt="hero" />
           <div className="shop-page-hero-heading-text">
             <div className="shop-page-hero-welcome">Home | Shop</div>
             <div className="shop-page-hero-heading">Our Shop</div>
@@ -113,19 +125,10 @@ export const Home = () => {
           <div className="shop-page-filter-section">
             <h3>Categories</h3>
             <ul className="shop-page-filter-categories">
-              {[
-                "All",
-                "Fruits",
-                "Vegetables",
-                "Grains",
-                "Dairy Products",
-                "Pulses",
-              ].map((category) => (
+              {["All", "Fruits", "Vegetables", "Grains", "Dairy Products", "Pulses"].map((category) => (
                 <li
                   key={category}
-                  className={
-                    category === selectedCategory ? "active-category" : ""
-                  }
+                  className={category === selectedCategory ? "active-category" : ""}
                   onClick={() => handleCategorySelection(category)}
                 >
                   {category}
@@ -145,9 +148,7 @@ export const Home = () => {
           ) : (
             filteredProducts.map((category) => (
               <section key={category.title}>
-                <h2 className="shop-page-category-title">
-                  {category.title}
-                </h2>
+                <h2 className="shop-page-category-title">{category.title}</h2>
                 <div className="shop-page-products-grid">
                   {category.items.map((product) => (
                     <ProductCard key={product.id} product={product} />

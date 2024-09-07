@@ -9,6 +9,8 @@ const dotenv = require("dotenv");
 const sharp = require('sharp');
 const {db} = require('./db');
 const {userRoute} = require('./controllers/auth_controller')
+const {productRoute} = require('./controllers/product_route')
+
 
 dotenv.config();
 
@@ -22,17 +24,17 @@ app.get('/', (req, res) => {
 );
 
 app.use("/user", userRoute);
+app.use("/product", productRoute);
 
-// File Upload Configuration using Multer
-const upload = multer({ dest: 'frontend/src/models' }); // Destination folder for file uploads
 
-// Correct the path to model.onnx
+
+const upload = multer({ dest: 'frontend/src/models' });
+
 const modelPath = path.join(__dirname, '../frontend/src/models/model.onnx');
-console.log("Loading model from: ", modelPath); // Log the correct path
+console.log("Loading model from: ", modelPath);
 
-// Load ONNX Model
 let session;
-onnx.InferenceSession.create(modelPath)  // Ensure the path now points to the correct location in frontend/src/models
+onnx.InferenceSession.create(modelPath)
   .then((s) => {
     session = s;
     console.log('Model loaded successfully');
@@ -41,10 +43,9 @@ onnx.InferenceSession.create(modelPath)  // Ensure the path now points to the co
     console.error('Failed to load model:', err);
   });
 
-// Route for running ML Model
 app.post('/predict', upload.single('image'), async (req, res) => {
   try {
-    const inputPath = req.file.path; // File path for the uploaded image
+    const inputPath = req.file.path;
 
     // Preprocess the image to convert it into a tensor
     const inputTensor = await preprocessImage(inputPath);
