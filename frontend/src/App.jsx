@@ -13,6 +13,8 @@ import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
 import Checkout from './components/marketPlace/Checkout';
 
+
+
 function App() {
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
   const noNavbarRoutes = ['/signin', '/signup', '/forgot-password'];
@@ -20,19 +22,6 @@ function App() {
   const introRef = useRef(null);
   const servicesRef = useRef(null);
   const carouselRef = useRef(null);
-
-  return (
-    <>
-      {!noNavbarRoutes.includes(location.pathname) && (
-        <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />
-      )}
-      {children}
-      {!noFooterRoutes.includes(location.pathname) && <Footer />}
-    </>
-  );
-}
-
-function App() {
   return (
     <Router>
       {!noFooterRoutes.includes(window.location.pathname) && <Navbar introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef}/>}

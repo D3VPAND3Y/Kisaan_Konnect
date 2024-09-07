@@ -51,7 +51,7 @@ const CropDiseasePrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/predict', {
+      const response = await fetch('http://localhost:3000/predict-crop-disease', {
         method: 'POST',
         body: formData,
       });

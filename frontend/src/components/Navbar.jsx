@@ -4,7 +4,6 @@ import { useEffect, useRef, useContext } from 'react';
 import '../styles/Header.scss';
 import { UserContext } from '../contexts/user.context';
 import { useLanguage } from '../contexts/LanguageContext'; // Import the language context
-import { useRef, useEffect } from 'react';
 
 const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   const { language, toggleLanguage, languageStrings } = useLanguage(); // Use language context
