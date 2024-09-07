@@ -3,29 +3,31 @@ import agricultureImg from '../assets/image.png';  // Replace with actual image 
 import organicImg from '../assets/image.png';
 import vegetablesImg from '../assets/image.png';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
 
 const Services = () => {
+  const { languageStrings } = useLanguage();  // Get the language strings from context
   const navigate = useNavigate();
 
   const services = [
     { 
       image: agricultureImg, 
-      title: 'Crop Disease Prediction', 
-      description: 'Predict potential crop diseases early to prevent crop loss and increase yield.',
+      title: languageStrings.cropDiseaseTitle, 
+      description: languageStrings.cropDiseaseDescription,
       iconClass: 'fa-tractor', 
       path: '/crop-disease-prediction' 
     },
     { 
       image: organicImg, 
-      title: 'What Crop to Grow', 
-      description: 'Get recommendations on the best crops to grow based on soil, weather, and market demand.',
+      title: languageStrings.whatCropTitle, 
+      description: languageStrings.whatCropDescription,
       iconClass: 'fa-seedling', 
       path: '/what-crop-to-grow' 
     },
     { 
       image: vegetablesImg, 
-      title: 'Fertilizer Prediction', 
-      description: 'Receive personalized fertilizer recommendations to optimize crop growth and reduce costs.',
+      title: languageStrings.fertilizerPredictionTitle, 
+      description: languageStrings.fertilizerPredictionDescription,
       iconClass: 'fa-carrot', 
       path: '/fertilizer-prediction' 
     },
@@ -38,8 +40,8 @@ const Services = () => {
   return (
     <div className="service">
       <div className="intro">
-        <p className="intro-text">Our Services</p>
-        <h2 className="section-title">What We Offer</h2>
+        <p className="intro-text">{languageStrings.serviceIntroText}</p>
+        <h2 className="section-title">{languageStrings.whatWeOffer}</h2>
       </div>
       <div className="cards">
         <div className="grid-container">
@@ -64,10 +66,10 @@ const Services = () => {
       {/* Bullet Points Section */}
       <div className="benefits-section">
         <ul className="benefits-list">
-          <li><span className="check-mark">✓</span> Increased efficiency in farming practices</li>
-          <li><span className="check-mark">✓</span> Data-driven decisions to enhance yield</li>
-          <li><span className="check-mark">✓</span> Personalized recommendations tailored to your needs</li>
-          <li><span className="check-mark">✓</span> Cost-effective solutions to reduce waste and optimize resources</li>
+          <li><span className="check-mark">✓</span> {languageStrings.benefitOne1}</li>
+          <li><span className="check-mark">✓</span> {languageStrings.benefitTwo2}</li>
+          <li><span className="check-mark">✓</span> {languageStrings.benefitThree}</li>
+          <li><span className="check-mark">✓</span> {languageStrings.benefitFour}</li>
         </ul>
       </div>
     </div>

@@ -1,34 +1,37 @@
 import '../styles/Introduction.scss';
 import LargeImage from '../assets/image.png';  // Replace with the actual image path
 import SmallImage from '../assets/image.png';  // Replace with the actual image path
+import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
 
 const Introduction = () => {
+  const { languageStrings } = useLanguage();  // Get the language strings from context
+
   return (
     <div className="agriculture-section">
       <div className="image-section">
-        <img src={LargeImage} alt="Large agriculture scene" className="large-image" />
-        <img src={SmallImage} alt="Small agriculture scene" className="small-image" />
+        <img src={LargeImage} alt={languageStrings.largeImageAlt} className="large-image" />
+        <img src={SmallImage} alt={languageStrings.smallImageAlt} className="small-image" />
       </div>
       <div className="text-section">
-        <p className="introduction">About Kisaan Konnect</p>
-        <h1 className="title">Empowering Farmers & Promoting Sustainable Agriculture</h1>
-        <h2 className="subtitle">Kisaan Konnect is your gateway to modern farming solutions.</h2>
+        <p className="introduction">{languageStrings.introductionTitle}</p>
+        <h1 className="title">{languageStrings.introductionMainTitle}</h1>
+        <h2 className="subtitle">{languageStrings.introductionSubtitle}</h2>
         <p className="description">
-          We are committed to connecting farmers with the latest innovations in sustainable farming, organic products, and agricultural support. Whether you're looking to boost productivity, access financial subsidies, or connect with markets, Kisaan Konnect is here to help.
+          {languageStrings.introductionDescription}
         </p>
         <div className="features">
           <div className="feature">
             <i className="icon basket-icon"></i>
-            <p>Cutting-edge AI technology designed to forecast the best path for your future!</p>
+            <p>{languageStrings.featureOne}</p>
           </div>
           <div className="feature">
             <i className="icon tips-icon"></i>
-            <p>Stay updated with the latest news and insights shaping the future of agriculture!</p>
+            <p>{languageStrings.featureTwo}</p>
           </div>
         </div>
         <ul className="benefits">
-          <li>✔ Access to the latest agricultural technologies and market insights.</li>
-          <li>✔ Dedicated support for small and large-scale farmers alike.</li>
+          <li>{languageStrings.benefitOne}</li>
+          <li>{languageStrings.benefitTwo}</li>
         </ul>
       </div>
     </div>

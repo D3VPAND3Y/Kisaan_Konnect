@@ -1,32 +1,38 @@
 import { useState, useEffect } from 'react';
 import '../styles/Carousel.scss';
 import image from '../assets/image.png';
+import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
 
 const newsData = [
   {
-    title: 'New Agricultural Reforms Announced',
-    description: 'The government has introduced new reforms that aim to support small farmers and boost productivity.',
+    id: 'news-1',
+    titleKey: 'newsOneTitle',
+    descriptionKey: 'newsOneDescription',
     image: image,
   },
   {
-    title: 'Weather Patterns Affecting Crop Yield',
-    description: 'Farmers are urged to adopt more climate-resilient crops as weather patterns become more erratic.',
+    id: 'news-2',
+    titleKey: 'newsTwoTitle',
+    descriptionKey: 'newsTwoDescription',
     image: image,
   },
   {
-    title: 'Organic Farming on the Rise',
-    description: 'A growing number of farmers are switching to organic farming, leading to increased demand for organic produce.',
+    id: 'news-3',
+    titleKey: 'newsThreeTitle',
+    descriptionKey: 'newsThreeDescription',
     image: image,
   },
   {
-    title: 'Farmers Receive New Subsidy',
-    description: 'Subsidies have been increased for farmers in rural areas, providing much-needed financial support.',
+    id: 'news-4',
+    titleKey: 'newsFourTitle',
+    descriptionKey: 'newsFourDescription',
     image: image,
   },
 ];
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { languageStrings } = useLanguage(); // Get language strings from context
 
   const nextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % newsData.length);
@@ -44,7 +50,7 @@ const Carousel = () => {
 
   return (
     <div className="carousel-section">
-      <h1 className="carousel-heading">🌾 Latest News in Agriculture 🌾</h1>
+      <h1 className="carousel-heading">🌾 {languageStrings.latestNewsHeading} 🌾</h1>
       <div className="carousel">
         <div
           className="carousel-content"
@@ -52,13 +58,13 @@ const Carousel = () => {
         >
           {newsData.map((news, index) => (
             <div
-              key={index}
+              key={news.id}
               className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
             >
-              <img src={news.image} alt={news.title} className="carousel-image" />
+              <img src={news.image} alt={languageStrings[news.titleKey]} className="carousel-image" />
               <div className="carousel-text">
-                <h2>{news.title}</h2>
-                <p>{news.description}</p>
+                <h2>{languageStrings[news.titleKey]}</h2>
+                <p>{languageStrings[news.descriptionKey]}</p>
               </div>
             </div>
           ))}

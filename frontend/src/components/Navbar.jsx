@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types'; // Import PropTypes
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useLocation for current route
-import { useEffect, useRef } from 'react'; // Import useEffect and useRef for managing scrolling after navigation
+import PropTypes from 'prop-types';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Header.scss';
+import { useLanguage } from '../contexts/LanguageContext'; // Import the language context
+import { useRef, useEffect } from 'react';
 
 const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
+  const { language, toggleLanguage, languageStrings } = useLanguage(); // Use language context
   const navigate = useNavigate();
   const location = useLocation(); // Get current route
-  const sectionToScroll = useRef(null); // Store the section to scroll to after navigation
+  const sectionToScroll = useRef(null);
 
-  // Scroll to the section after navigation
-  useEffect(() => {
+   // Scroll to the section after navigation
+   useEffect(() => {
     if (location.pathname === '/dashboard' && sectionToScroll.current) {
       scrollToSection(sectionToScroll.current);
       sectionToScroll.current = null; // Reset after scrolling
@@ -32,13 +34,12 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
 
   const handleAboutClick = () => {
     if (location.pathname !== '/dashboard') {
-      // Navigate to dashboard and then scroll to the section
       sectionToScroll.current = introRef;
       navigate('/dashboard');
     } else {
       scrollToSection(introRef);
     }
-  };
+  }
 
   const handleServicesClick = () => {
     if (location.pathname !== '/dashboard') {
@@ -47,7 +48,7 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     } else {
       scrollToSection(servicesRef);
     }
-  };
+  }
 
   const handleAwarenessClick = () => {
     if (location.pathname !== '/dashboard') {
@@ -56,54 +57,50 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     } else {
       scrollToSection(carouselRef);
     }
-  };
+  }
 
-  // Determine if the current route is active
   const isActive = (path) => location.pathname === path;
 
   return (
     <header className="header">
       <div className="header-top">
         <div className="logo">
-          <button className="logo-btn" onClick={handleHomeClick}>
-            Kisaan Konnect
-          </button>
+          <button className="logo-btn">{languageStrings.logo}</button>
         </div>
         <div className="contact-info">
           <div className="contact">
             <i className="fas fa-phone"></i>
-            <span>Contact us: 9943-455-644</span>
+            <span>{languageStrings.contactUs}: 9943-455-644</span>
           </div>
           <div className="email">
             <i className="fas fa-envelope"></i>
-            <span>Email: help@kisaankonnect.com</span>
+            <span>{languageStrings.email}</span>
           </div>
         </div>
         <div className="actions">
-          <button className="login-btn">LOGIN</button>
+          <button className="login-btn">{languageStrings.login}</button>
           <div className="language-toggle">
-            <span>English</span>
-            <input type="checkbox" id="language-switch" />
-            <label htmlFor="language-switch">हिंदी</label>
+            <span>{languageStrings.english}</span>
+            <input
+              type="checkbox"
+              id="language-switch"
+              onChange={toggleLanguage}
+              checked={language === 'hi'}
+            />
+            <label htmlFor="language-switch">{languageStrings.hindi}</label>
           </div>
         </div>
       </div>
       <nav className="navbar">
         <ul>
-          <li
-            className={isActive('/dashboard') ? 'active' : ''}
-            onClick={handleHomeClick}
-          >
-            Home
+          <li className={isActive('/dashboard') ? 'active' : ''} onClick={handleHomeClick}>
+            {languageStrings.home}
           </li>
-          <li className="Navbar__about" onClick={handleAboutClick}>About</li>
-          <li className="Navbar__services" onClick={handleServicesClick}>Services</li>
-          <li className="Navbar__Awareness" onClick={handleAwarenessClick}>Awareness</li>
-          <li
-            className={isActive('/market-place') ? 'active' : ''}
-            onClick={handleMarketPlaceClick}
-          >
-            Market Place
+          <li onClick={handleAboutClick}>{languageStrings.about}</li>
+          <li onClick={handleServicesClick}>{languageStrings.services}</li>
+          <li onClick={handleAwarenessClick}>{languageStrings.awareness}</li>
+          <li className={isActive('/market-place') ? 'active' : ''} onClick={handleMarketPlaceClick}>
+            {languageStrings.marketPlace}
           </li>
         </ul>
       </nav>
@@ -113,22 +110,10 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
 
 // Define prop types for validation
 Navbar.propTypes = {
-  heroRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
-  ]),
-  introRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
-  ]),
-  servicesRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
-  ]),
-  carouselRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.any })
-  ]),
+  heroRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.any })]),
+  introRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.any })]),
+  servicesRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.any })]),
+  carouselRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.any })]),
 };
 
 export default Navbar;

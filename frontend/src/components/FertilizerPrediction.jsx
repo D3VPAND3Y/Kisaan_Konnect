@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import '../styles/FertilizerPrediction.scss'; // Import the SCSS file
 import cropbgImage from '../assets/CropDiseaseImage.png';
-
-
+import { useLanguage } from '../contexts/LanguageContext'; // Import the language context
 
 const soilTypes = ['Sandy', 'Loamy', 'Clay', 'Silty', 'Peaty', 'Chalky'];
 const cropTypes = ['Wheat', 'Rice', 'Maize', 'Barley', 'Soybean', 'Cotton'];
 
 const FertilizerPrediction = () => {
+  const { languageStrings } = useLanguage(); // Access language strings
+
   const [formData, setFormData] = useState({
     temperature: '',
     humidity: '',
@@ -53,19 +54,19 @@ const FertilizerPrediction = () => {
       setPrediction(data.prediction);
       setIsLoading(false);
     } catch (err) {
-      setError('Failed to get prediction: ', err);
+      setError(languageStrings.fp_erro, err); // Error message from language strings
       setIsLoading(false);
     }
   };
 
   return (
     <div className="prediction-container">
-      <img src={cropbgImage} alt="Crop Disease Prediction" className="bg-image" />
-      <h1>Fertilizer Prediction</h1>
-      <p className='Fert_pred_desc'>Fill in the details to get fertilizer recommendations</p>
+      <img src={cropbgImage} alt={languageStrings.fp_image_alt} className="bg-image" />
+      <h1>{languageStrings.fp_heading}</h1>
+      <p className='Fert_pred_desc'>{languageStrings.fp_description}</p>
       <form className="fertilizer-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Temperature (°C)</label>
+          <label>{languageStrings.fp_temperature}</label>
           <input
             type="number"
             name="temperature"
@@ -75,7 +76,7 @@ const FertilizerPrediction = () => {
           />
         </div>
         <div className="form-group">
-          <label>Humidity (%)</label>
+          <label>{languageStrings.fp_humidity}</label>
           <input
             type="number"
             name="humidity"
@@ -85,7 +86,7 @@ const FertilizerPrediction = () => {
           />
         </div>
         <div className="form-group">
-          <label>Moisture (%)</label>
+          <label>{languageStrings.fp_moisture}</label>
           <input
             type="number"
             name="moisture"
@@ -95,14 +96,14 @@ const FertilizerPrediction = () => {
           />
         </div>
         <div className="form-group">
-          <label>Soil Type</label>
+          <label>{languageStrings.fp_soil_type}</label>
           <select
             name="soilType"
             value={formData.soilType}
             onChange={handleInputChange}
             required
           >
-            <option value="">Select Soil Type</option>
+            <option value="">{languageStrings.fp_select_soil_type}</option>
             {soilTypes.map((type, index) => (
               <option key={index} value={type}>
                 {type}
@@ -111,14 +112,14 @@ const FertilizerPrediction = () => {
           </select>
         </div>
         <div className="form-group">
-          <label>Crop Type</label>
+          <label>{languageStrings.fp_crop_type}</label>
           <select
             name="cropType"
             value={formData.cropType}
             onChange={handleInputChange}
             required
           >
-            <option value="">Select Crop Type</option>
+            <option value="">{languageStrings.fp_select_crop_type}</option>
             {cropTypes.map((type, index) => (
               <option key={index} value={type}>
                 {type}
@@ -127,7 +128,7 @@ const FertilizerPrediction = () => {
           </select>
         </div>
         <div className="form-group">
-          <label>Nitrogen Content (mg/kg)</label>
+          <label>{languageStrings.fp_nitrogen}</label>
           <input
             type="number"
             name="nitrogen"
@@ -137,7 +138,7 @@ const FertilizerPrediction = () => {
           />
         </div>
         <div className="form-group">
-          <label>Potassium Content (mg/kg)</label>
+          <label>{languageStrings.fp_potassium}</label>
           <input
             type="number"
             name="potassium"
@@ -147,7 +148,7 @@ const FertilizerPrediction = () => {
           />
         </div>
         <div className="form-group">
-          <label>Phosphorous Content (mg/kg)</label>
+          <label>{languageStrings.fp_phosphorous}</label>
           <input
             type="number"
             name="phosphorous"
@@ -157,15 +158,14 @@ const FertilizerPrediction = () => {
           />
         </div>
         <button type="submit" className="submit-btn">
-          Get Fertilizer Recommendation
+          {isLoading ? languageStrings.fp_loading : languageStrings.fp_get_recommendation}
         </button>
       </form>
 
-      {isLoading && <p className="loading-text">Loading...</p>}
       {error && <p className="error-text">{error}</p>}
       {prediction && (
         <div className="result-container">
-          <h2>Recommended Fertilizer:</h2>
+          <h2>{languageStrings.fp_recommended}</h2>
           <p className="prediction-result">{prediction}</p>
         </div>
       )}

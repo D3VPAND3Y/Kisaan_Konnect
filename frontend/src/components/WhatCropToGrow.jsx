@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import '../styles/CropPrediction.scss';
 import cropbgImage from '../assets/CropDiseaseImage.png';
+import { useLanguage } from '../contexts/LanguageContext'; // Import the language context
 
 const WhatCropToGrow = () => {
+  const { languageStrings } = useLanguage(); // Access language strings
+
   const [formData, setFormData] = useState({
     nitrogen: '',
     phosphorous: '',
@@ -44,7 +47,7 @@ const WhatCropToGrow = () => {
       setPrediction(data.prediction);
       setIsLoading(false);
     } catch (err) {
-      setError('Failed to get prediction: ', err);
+      setError(languageStrings.wctg_error); // Error message from language strings
       setIsLoading(false);
     }
   };
@@ -55,15 +58,15 @@ const WhatCropToGrow = () => {
 
   return (
     <div className="prediction-container">
-      <img src={cropbgImage} alt="Crop Disease Prediction" className="bg-image" />
-      <h1>What Crop to Grow</h1>
+      <img src={cropbgImage} alt={languageStrings.wctg_image_alt} className="bg-image" />
+      <h1>{languageStrings.wctg_heading}</h1>
       <div className="description">
-      Fill in the details to get Crop recommendations
+        {languageStrings.wctg_description}
       </div>
       <form onSubmit={handleSubmit} className="crop-form">
         <div className="input-row">
           <div className="input-group">
-            <label htmlFor="nitrogen">Nitrogen (N)</label>
+            <label htmlFor="nitrogen">{languageStrings.wctg_nitrogen}</label>
             <input
               type="number"
               id="nitrogen"
@@ -74,7 +77,7 @@ const WhatCropToGrow = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="phosphorous">Phosphorous (P)</label>
+            <label htmlFor="phosphorous">{languageStrings.wctg_phosphorous}</label>
             <input
               type="number"
               id="phosphorous"
@@ -88,7 +91,7 @@ const WhatCropToGrow = () => {
 
         <div className="input-row">
           <div className="input-group">
-            <label htmlFor="potassium">Potassium (K)</label>
+            <label htmlFor="potassium">{languageStrings.wctg_potassium}</label>
             <input
               type="number"
               id="potassium"
@@ -99,7 +102,7 @@ const WhatCropToGrow = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="temperature">Temperature (°C)</label>
+            <label htmlFor="temperature">{languageStrings.wctg_temperature}</label>
             <input
               type="number"
               id="temperature"
@@ -113,7 +116,7 @@ const WhatCropToGrow = () => {
 
         <div className="input-row">
           <div className="input-group">
-            <label htmlFor="humidity">Humidity (%)</label>
+            <label htmlFor="humidity">{languageStrings.wctg_humidity}</label>
             <input
               type="number"
               id="humidity"
@@ -124,7 +127,7 @@ const WhatCropToGrow = () => {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="ph">pH Level</label>
+            <label htmlFor="ph">{languageStrings.wctg_ph}</label>
             <input
               type="number"
               step="0.1"
@@ -139,7 +142,7 @@ const WhatCropToGrow = () => {
 
         <div className="input-row">
           <div className="input-group">
-            <label htmlFor="rainfall">Rainfall (mm)</label>
+            <label htmlFor="rainfall">{languageStrings.wctg_rainfall}</label>
             <input
               type="number"
               id="rainfall"
@@ -152,14 +155,14 @@ const WhatCropToGrow = () => {
         </div>
 
         <button type="submit" className="submit-btn">
-          {isLoading ? 'Predicting...' : 'Predict'}
+          {isLoading ? languageStrings.wctg_predicting : languageStrings.wctg_predict}
         </button>
       </form>
 
       {error && <p className="error-text">{error}</p>}
       {prediction && (
         <div className="result-container">
-          <h2>Recommended Crop:</h2>
+          <h2>{languageStrings.wctg_result}</h2>
           <p className="prediction-result">{prediction}</p>
         </div>
       )}

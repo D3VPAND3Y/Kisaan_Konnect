@@ -29,7 +29,7 @@ const Dashboard = ({ introRef, servicesRef, carouselRef }) => {
   }, [showScroll]);
 
   return (
-    <div>
+    <div className='dashboard_sections'>
       <div>
         <Herosection introRef={introRef} />
       </div>
