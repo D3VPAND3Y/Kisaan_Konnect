@@ -10,27 +10,26 @@ const Introduction = () => {
         <img src={SmallImage} alt="Small agriculture scene" className="small-image" />
       </div>
       <div className="text-section">
-        <p className="introduction">Our Introduction</p>
-        <h1 className="title">Agriculture & Organic Product Farm</h1>
-        <h2 className="subtitle">Agrios is the largest global organic farm.</h2>
+        <p className="introduction">About Kisaan Konnect</p>
+        <h1 className="title">Empowering Farmers & Promoting Sustainable Agriculture</h1>
+        <h2 className="subtitle">Kisaan Konnect is your gateway to modern farming solutions.</h2>
         <p className="description">
-          There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humor or random word which don't look even.
+          We are committed to connecting farmers with the latest innovations in sustainable farming, organic products, and agricultural support. Whether you're looking to boost productivity, access financial subsidies, or connect with markets, Kisaan Konnect is here to help.
         </p>
         <div className="features">
           <div className="feature">
             <i className="icon basket-icon"></i>
-            <p>Growing fruits vegetables</p>
+            <p>Cutting-edge AI technology designed to forecast the best path for your future!</p>
           </div>
           <div className="feature">
             <i className="icon tips-icon"></i>
-            <p>Tips for ripening your fruits</p>
+            <p>Stay updated with the latest news and insights shaping the future of agriculture!</p>
           </div>
         </div>
         <ul className="benefits">
-          <li>✔ Lorem Ipsum is not simply random text.</li>
-          <li>✔ Making this the first true generator on the internet.</li>
+          <li>✔ Access to the latest agricultural technologies and market insights.</li>
+          <li>✔ Dedicated support for small and large-scale farmers alike.</li>
         </ul>
-        <button className="discover-button">Discover More</button>
       </div>
     </div>
   );

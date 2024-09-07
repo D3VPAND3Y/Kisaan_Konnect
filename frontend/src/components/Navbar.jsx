@@ -72,11 +72,11 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
         <div className="contact-info">
           <div className="contact">
             <i className="fas fa-phone"></i>
-            <span>Contact us: 911</span>
+            <span>Contact us: 9943-455-644</span>
           </div>
           <div className="email">
             <i className="fas fa-envelope"></i>
-            <span>hehe@gmail.com</span>
+            <span>Email: help@kisaankonnect.com</span>
           </div>
         </div>
         <div className="actions">

@@ -1,7 +1,12 @@
 import HeroImg from "../assets/Herosection.png";
 import "../styles/Herosection.scss";
 
-const Herosection = () => {
+const Herosection = ({introRef}) => {
+
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="hero-section">
       <img className="hero-section__image" src={HeroImg} alt="hero image" />
@@ -12,7 +17,7 @@ const Herosection = () => {
         <div className="hero-section__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsa, qui assumenda amet nulla soluta!
         </div>
-        <button className="hero-section__about-button">About us</button>
+        <button onClick={() => scrollToSection(introRef)} className="hero-section__about-button">About us</button>
       </div>
     </div>
   );
