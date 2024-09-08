@@ -1,22 +1,22 @@
-.image {
-    width: 100vw;
-    height: auto;
-    -webkit-user-drag: none;
-    user-select: none;
-    object-fit: cover;
-    position: absolute;
-    top:130px;
-  }
+.cropDiseasePrediction_page__image {
+  width: 100vw;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  object-fit: cover;
+  position: absolute;
+  top: 130px;
+}
 
-  .prediction-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    min-height: 100vh;
+.cropDiseasePrediction_page__prediction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100vh;
 
-    .heading-text {
+  .cropDiseasePrediction_page__heading-text {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -27,68 +27,66 @@
       background-color: transparent;
       width: 80%;
       max-width: 50vw;
-      top: 30rem;
       left: 50%;
       transform: translateX(-50%);
+      top: 20rem;
 
-      @media (max-width: 1024px) {
-        top: 18rem;
-        max-width: 60vw;
+      @media (max-width: 1033px) {
+          top: 18rem;
+          max-width: 60vw;
       }
 
       @media (max-width: 768px) {
-        top: 15rem;
-        max-width: 70vw;
+          top: 16rem;
+          max-width: 70vw;
       }
 
       @media (max-width: 480px) {
-        top: 12rem;
-        max-width: 90vw;
+          top: 13rem;
+          max-width: 90vw;
       }
-    }
+  }
 
-    .Heading {
+  .cropDiseasePrediction_page__heading {
       font-size: 6rem;
       font-family: "Covered By Your Grace", cursive;
 
       @media (max-width: 1024px) {
-        font-size: 5rem;
+          font-size: 5rem;
       }
 
       @media (max-width: 768px) {
-        font-size: 4rem;
+          font-size: 4rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 3rem;
+          font-size: 3rem;
       }
-    }
+  }
 
-    .one-stop {
+  .cropDiseasePrediction_page__one-stop {
       font-size: 3rem;
       font-family: "Covered By Your Grace", cursive;
 
       @media (max-width: 1024px) {
-        font-size: 2.5rem;
+          font-size: 2.5rem;
       }
 
       @media (max-width: 768px) {
-        font-size: 2rem;
+          font-size: 2rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 1.5rem;
+          font-size: 1.5rem;
       }
-    }
+  }
 
-    // Wrapper for the dropzone and result area
-    .dropzone-wrapper {
+  .cropDiseasePrediction_page__dropzone-wrapper {
       margin-top: 2rem;
       text-align: center;
-    }
+  }
 
-    // Styling for the dropzone
-    .dropzone {
+  .cropDiseasePrediction_page__dropzone {
       max-width: 500px;
       padding: 2rem;
       border: 2px dashed #ffffff;
@@ -101,53 +99,54 @@
       color: #2b2d42;
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.9);
+          background-color: rgba(255, 255, 255, 0.9);
       }
 
       &.drag-active {
-        background-color: rgba(212, 226, 212, 0.7);
-        border-color: #2a9d8f;
+          background-color: rgba(212, 226, 212, 0.7);
+          border-color: #2a9d8f;
       }
 
       p {
-        margin: 0;
+          margin: 0;
       }
-    }
+  }
 
-    .image-preview {
+  .cropDiseasePrediction_page__image-preview {
       margin-top: 2rem;
       text-align: center;
 
       h3 {
-        font-size: 1.5rem;
-        color: white;
+          font-size: 1.5rem;
+          color: white;
       }
 
       img {
-        max-width: 300px;
-        max-height: 300px;
-        margin-top: 1rem;
-        border-radius: 12px;
-        border: 2px solid #2a9d8f;
-        object-fit: cover;
+          max-width: 300px;
+          max-height: 300px;
+          margin-top: 1rem;
+          border-radius: 12px;
+          border: 2px solid #2a9d8f;
+          object-fit: cover;
       }
-    }
+  }
 
-    .loading-text {
+  .cropDiseasePrediction_page__loading-text {
       font-size: 1.2rem;
       color: #f77f00;
       font-weight: 600;
       margin-top: 1rem;
-    }
+  }
 
-    .error-text {
+  .cropDiseasePrediction_page__error-text {
       font-size: 1.2rem;
       color: #d62828;
       font-weight: 600;
       margin-top: 1rem;
-    }
+      margin-bottom: 2rem;
+  }
 
-    .result-container {
+  .cropDiseasePrediction_page__result-container {
       margin-top: 2rem;
       background-color: rgba(255, 255, 255, 0.8);
       padding: 1.5rem;
@@ -155,15 +154,16 @@
       border: 2px solid #2a9d8f;
 
       h2 {
-        font-size: 1.8rem;
-        color: #2b2d42;
-        margin-bottom: 0.5rem;
+          font-size: 1.8rem;
+          color: #2b2d42;
+          margin-bottom: 0.5rem;
       }
 
-      .prediction-result {
-        font-size: 1.6rem;
-        color: #2a9d8f;
-        font-weight: 700;
+      .cropDiseasePrediction_page__prediction-result {
+          font-size: 1.6rem;
+          color: #2a9d8f;
+          font-weight: 700;
+          margin-bottom: 2rem;
       }
-    }
   }
+}

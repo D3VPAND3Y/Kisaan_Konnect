@@ -21,7 +21,14 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
 
   const scrollToSection = (ref) => {
     if (ref?.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
+      const offset = -135; // Adjust this value as needed for more/less offset
+      const elementPosition = ref.current.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition + offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -30,7 +37,12 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   };
 
   const handleHomeClick = () => {
-    navigate('/dashboard');
+    if (location.pathname !== '/dashboard') {
+      sectionToScroll.current = heroRef;
+      navigate('/dashboard');
+    } else {
+      scrollToSection(heroRef);
+    }
   };
 
   const handleAboutClick = () => {
@@ -75,7 +87,7 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     <header className="header">
       <div className="header-top">
         <div className="logo">
-          <button className="logo-btn">{languageStrings.logo}</button>
+          <button onClick={handleHomeClick} className="logo-btn">{languageStrings.logo}</button>
         </div>
         <div className="contact-info">
           <div className="contact">

@@ -3,6 +3,8 @@
 .shop-page {
     font-family: 'Poppins', sans-serif;
     color: #333;
+    max-width: 100vw; /* Ensure no overflow on smaller screens */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .shop-page-hero {
@@ -15,10 +17,18 @@
     align-items: center;
     justify-content: center;
     top: 9rem;
+    width:100%;
+}
+
+@media (max-width: 768px) {
+    .shop-page-hero {
+        width: 100%;
+    }
 }
 
 .shop-page-hero-image {
-    display: none; /* Assuming you don't want to display this image directly */
+    display: none;
+    top:130px;
 }
 
 .shop-page-hero-heading-text {
@@ -39,8 +49,8 @@
 .shop-page-content {
     display: flex;
     padding: 40px 20px;
-    max-width: 1200px;
     margin: 0 auto;
+    max-width: 100%; /* Prevent content overflow */
 }
 
 .shop-page-filters {
@@ -73,14 +83,6 @@
     font-weight: 500;
 }
 
-.shop-page-filter-section .filter-checkbox {
-    margin-bottom: 10px;
-}
-
-.shop-page-filter-section .filter-checkbox label {
-    font-size: 1rem;
-}
-
 .shop-page-filter-apply-button {
     padding: 10px 20px;
     background-color: #71bf43;
@@ -107,6 +109,7 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
+
 .shop-page-pagination {
     display: flex;
     justify-content: center;
@@ -145,7 +148,11 @@
     color: #71bf43;
 }
 
-/* Custom select box styling */
+.active-category {
+    font-weight: bold;
+    color: #71bf43;
+}
+
 .shop-page-custom-select-wrapper {
     position: relative;
     display: inline-block;
@@ -192,78 +199,67 @@
     background-color: #f9f9f9;
 }
 
-.shop-page-filter-categories li {
-    cursor: pointer;
-    padding: 10px;
-    transition: color 0.3s ease;
-  }
-
-  .shop-page-filter-categories li:hover {
-    color: #71bf43;
-  }
-
-  .active-category {
-    font-weight: bold;
-    color: #71bf43;
-  }
-
-  .shop-page-products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
-  .no-items-container {
+.shop-page-navbar {
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    height: 300px; /* Adjust this height to fit your layout */
-  }
 
-  .no-items-message {
-    font-size: 3rem; /* Large font size */
-    font-weight: bold;
-    /* color: #ff4040; Customize the color if needed */
-    text-align: center;
-  }
-
-  .shop-page-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 250px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     position: sticky;
     z-index: 1000;
     margin-top: 8rem;
-  }
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 
-  .shop-page-search input {
+.shop-page-search input {
     width: 300px;
     padding: 8px 12px;
     font-size: 1rem;
     border: 1px solid #ccc;
     top: 3rem;
     border-radius: 5px;
-  }
+}
 
-  .shop-page-search input:focus {
+.shop-page-search input:focus {
     outline: none;
     border-color: #71bf43;
-  }
+}
 
-  .cart-icon {
+.cart-icon {
     position: relative;
-  }
+}
 
-  .no-items-container {
+.no-items-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 200px;
-  }
+}
 
-  .no-items-message {
+.no-items-message {
     font-size: 2rem;
     color: #555;
-  }
+}
+
+/* Additional mobile-friendly adjustments */
+
+@media (max-width: 576px) {
+    .shop-page-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .shop-page-filters {
+        width: 100%;
+    }
+    
+    .shop-page-products {
+        width: 100%;
+    }
+    .shop-page-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}

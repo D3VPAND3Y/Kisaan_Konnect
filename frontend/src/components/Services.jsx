@@ -38,25 +38,25 @@ const Services = () => {
   };
 
   return (
-    <div className="service">
-      <div className="intro">
-        <p className="intro-text">{languageStrings.serviceIntroText}</p>
-        <h2 className="section-title">{languageStrings.whatWeOffer}</h2>
+    <div className="services_page__service">
+      <div className="services_page__intro">
+        <p className="services_page__intro-text">{languageStrings.serviceIntroText}</p>
+        <h2 className="services_page__section-title">{languageStrings.whatWeOffer}</h2>
       </div>
-      <div className="cards">
-        <div className="grid-container">
+      <div className="services_page__cards">
+        <div className="services_page__grid-container">
           {services.map((service, index) => (
             <div
               key={index}
-              className="card"
+              className="services_page__card"
               onClick={() => handleCardClick(service.path)}
               style={{ cursor: 'pointer' }}
             >
-              <img src={service.image} alt={service.title} className="card-image" />
-              <div className="card-content">
-                <i className={`fa ${service.iconClass} card-icon`} aria-hidden="true"></i>
-                <h3 className="card-title">{service.title}</h3>
-                <p className="card-description">{service.description}</p>
+              <img src={service.image} alt={service.title} className="services_page__card-image" />
+              <div className="services_page__card-content">
+                <i className={`fa ${service.iconClass} services_page__card-icon`} aria-hidden="true"></i>
+                <h3 className="services_page__card-title">{service.title}</h3>
+                <p className="services_page__card-description">{service.description}</p>
               </div>
             </div>
           ))}
@@ -64,12 +64,12 @@ const Services = () => {
       </div>
 
       {/* Bullet Points Section */}
-      <div className="benefits-section">
-        <ul className="benefits-list">
-          <li><span className="check-mark">✓</span> {languageStrings.benefitOne1}</li>
-          <li><span className="check-mark">✓</span> {languageStrings.benefitTwo2}</li>
-          <li><span className="check-mark">✓</span> {languageStrings.benefitThree}</li>
-          <li><span className="check-mark">✓</span> {languageStrings.benefitFour}</li>
+      <div className="services_page__benefits-section">
+        <ul className="services_page__benefits-list">
+          <li><span className="services_page__check-mark">✓</span> {languageStrings.benefitOne1}</li>
+          <li><span className="services_page__check-mark">✓</span> {languageStrings.benefitTwo2}</li>
+          <li><span className="services_page__check-mark">✓</span> {languageStrings.benefitThree}</li>
+          <li><span className="services_page__check-mark">✓</span> {languageStrings.benefitFour}</li>
         </ul>
       </div>
     </div>

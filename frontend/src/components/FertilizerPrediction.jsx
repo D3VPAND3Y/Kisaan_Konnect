@@ -60,12 +60,12 @@ const FertilizerPrediction = () => {
   };
 
   return (
-    <div className="prediction-container">
-      <img src={cropbgImage} alt={languageStrings.fp_image_alt} className="bg-image" />
-      <h1>{languageStrings.fp_heading}</h1>
-      <p className='Fert_pred_desc'>{languageStrings.fp_description}</p>
-      <form className="fertilizer-form" onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div className="fertilizerPred_page__prediction-container">
+      <img src={cropbgImage} alt={languageStrings.fp_image_alt} className="fertilizerPred_page__bg-image" />
+      <div className='fertilizerPred_page__fp-h1'>{languageStrings.fp_heading}</div>
+      <p className='fertilizerPred_page__Fert_pred_desc'>{languageStrings.fp_description}</p>
+      <form className="fertilizerPred_page__fertilizer-form" onSubmit={handleSubmit}>
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_temperature}</label>
           <input
             type="number"
@@ -75,7 +75,7 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_humidity}</label>
           <input
             type="number"
@@ -85,7 +85,7 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_moisture}</label>
           <input
             type="number"
@@ -95,7 +95,7 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_soil_type}</label>
           <select
             name="soilType"
@@ -111,7 +111,7 @@ const FertilizerPrediction = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_crop_type}</label>
           <select
             name="cropType"
@@ -127,7 +127,7 @@ const FertilizerPrediction = () => {
             ))}
           </select>
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_nitrogen}</label>
           <input
             type="number"
@@ -137,7 +137,7 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_potassium}</label>
           <input
             type="number"
@@ -147,7 +147,7 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="fertilizerPred_page__form-group">
           <label>{languageStrings.fp_phosphorous}</label>
           <input
             type="number"
@@ -157,16 +157,16 @@ const FertilizerPrediction = () => {
             required
           />
         </div>
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="fertilizerPred_page__submit-btn">
           {isLoading ? languageStrings.fp_loading : languageStrings.fp_get_recommendation}
         </button>
       </form>
 
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="fertilizerPred_page__error-text">{error}</p>}
       {prediction && (
-        <div className="result-container">
+        <div className="fertilizerPred_page__result-container">
           <h2>{languageStrings.fp_recommended}</h2>
-          <p className="prediction-result">{prediction}</p>
+          <p className="fertilizerPred_page__prediction-result">{prediction}</p>
         </div>
       )}
     </div>

@@ -4,6 +4,8 @@
   color: #ddd;
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
+  position: relative;
+  margin-top: 4rem;
 }
 
 .footer-container {

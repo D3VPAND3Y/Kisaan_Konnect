@@ -17,7 +17,6 @@ const CropDiseasePrediction = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Example class labels for crop diseases (replace with actual classes)
   const classNames = [
     'Disease: Grape___healthy',
     'Disease: Corn_(maize)__Northern_Leaf_Blight',
@@ -74,15 +73,15 @@ const CropDiseasePrediction = () => {
   });
 
   return (
-    <div className="prediction-container">
-      <img className="image" src={cropbgImage} alt="Crop Disease" />
-      <div className="heading-text">
-        <div className="heading nice-font Heading">{languageStrings.cdp_heading}</div>
-        <div className="one-stop">{languageStrings.cdp_subhead}</div>
+    <div className="cropDiseasePrediction_page__prediction-container">
+      <img className="cropDiseasePrediction_page__image" src={cropbgImage} alt="Crop Disease" />
+      <div className="cropDiseasePrediction_page__heading-text">
+        <div className="cropDiseasePrediction_page__heading">{languageStrings.cdp_heading}</div>
+        <div className="cropDiseasePrediction_page__one-stop">{languageStrings.cdp_subhead}</div>
 
-        <div className="dropzone-wrapper">
+        <div className="cropDiseasePrediction_page__dropzone-wrapper">
           <div
-            className={`dropzone ${isDragActive ? 'drag-active' : ''}`}
+            className={`cropDiseasePrediction_page__dropzone ${isDragActive ? 'drag-active' : ''}`}
             {...getRootProps()}
           >
             <input {...getInputProps()} />
@@ -95,18 +94,18 @@ const CropDiseasePrediction = () => {
 
           {/* Show image preview if available */}
           {imagePreview && (
-            <div className="image-preview">
+            <div className="cropDiseasePrediction_page__image-preview">
               <h3>{languageStrings.cdp_uploaded}</h3>
               <img src={imagePreview} alt="Uploaded" />
             </div>
           )}
 
-          {isLoading && <p className="loading-text">{languageStrings.cdp_loading}</p>}
-          {error && <p className="error-text">{error}</p>}
+          {isLoading && <p className="cropDiseasePrediction_page__loading-text">{languageStrings.cdp_loading}</p>}
+          {error && <p className="cropDiseasePrediction_page__error-text">{error}</p>}
           {prediction && (
-            <div className="result-container">
+            <div className="cropDiseasePrediction_page__result-container">
               <h2>{languageStrings.cdp_predicted}</h2>
-              <p className="prediction-result">{getPredictedClass(prediction)}</p>
+              <p className="cropDiseasePrediction_page__prediction-result">{getPredictedClass(prediction)}</p>
             </div>
           )}
         </div>
