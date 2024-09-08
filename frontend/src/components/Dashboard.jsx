@@ -6,7 +6,7 @@ import Carousel from './Carousel';
 import PropTypes from 'prop-types';
 import '../styles/Dashboard.scss'; // Import custom styles
 
-const Dashboard = ({ introRef, servicesRef, carouselRef }) => {
+const Dashboard = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   const [showScroll, setShowScroll] = useState(false);
 
   // Show scroll-to-top button when scrolling down
@@ -30,7 +30,7 @@ const Dashboard = ({ introRef, servicesRef, carouselRef }) => {
 
   return (
     <div className='dashboard_sections'>
-      <div>
+      <div ref={heroRef}>
         <Herosection introRef={introRef} />
       </div>
       <div ref={introRef}>
