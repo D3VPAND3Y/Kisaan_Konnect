@@ -1,0 +1,140 @@
+.bg-image{
+    width: 100vw;
+    height: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+    object-fit: cover;
+    position: absolute;
+    top:130px;
+    z-index: 0;
+}
+
+.prediction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+  
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2b2d42;
+        margin-bottom: 2rem;
+        text-align: center;
+        z-index: 999;
+        font-family: "Covered By Your Grace", cursive;
+        font-size: 6rem;
+        color: white;
+        top: 30rem;
+      }
+
+    .description{
+        font-size: 2rem;
+        font-weight: bold;
+        color: #2b2d42;
+        margin-bottom: 2rem;
+        text-align: center;
+        z-index: 999;
+        font-family: "Covered By Your Grace", cursive;
+        color: white;
+    }
+  
+    .crop-form {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 999;
+      align-items: center;
+
+    }
+  
+    .input-row {
+      display: flex;
+      justify-content: space-between;
+  
+      .input-group {
+        flex: 1;
+        margin-right: 1rem;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+  
+        label {
+          font-size: 1rem;
+          color: #2b2d42;
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+  
+        input {
+          width: 100%;
+          padding: 0.75rem;
+          font-size: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  
+    .submit-btn {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #21867a;
+      }
+    }
+  
+    .error-text {
+      color: #d62828;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  
+    .result-container {
+      margin-top: 2rem;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 2px solid #2a9d8f;
+  
+      h2 {
+        font-size: 1.8rem;
+        color: #2b2d42;
+        margin-bottom: 0.5rem;
+      }
+  
+      .prediction-result {
+        font-size: 1.6rem;
+        color: #2a9d8f;
+        font-weight: 700;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .crop-form {
+        .input-row {
+          flex-direction: column;
+        }
+      }
+    }
+  }

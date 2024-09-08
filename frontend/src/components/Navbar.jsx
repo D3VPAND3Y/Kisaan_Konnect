@@ -3,8 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useContext } from 'react';
 import '../styles/Header.scss';
 import { UserContext } from '../contexts/user.context';
+import { useLanguage } from '../contexts/LanguageContext'; // Import the language context
 
 const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
+  const { language, toggleLanguage, languageStrings } = useLanguage(); // Use language context
   const navigate = useNavigate();
   const location = useLocation();
   const sectionToScroll = useRef(null);
@@ -38,7 +40,7 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     } else {
       scrollToSection(introRef);
     }
-  };
+  }
 
   const handleServicesClick = () => {
     if (location.pathname !== '/dashboard') {
@@ -47,7 +49,7 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     } else {
       scrollToSection(servicesRef);
     }
-  };
+  }
 
   const handleAwarenessClick = () => {
     if (location.pathname !== '/dashboard') {
@@ -73,18 +75,16 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
     <header className="header">
       <div className="header-top">
         <div className="logo">
-          <button className="logo-btn" onClick={handleHomeClick}>
-            Kisaan Konnect
-          </button>
+          <button className="logo-btn">{languageStrings.logo}</button>
         </div>
         <div className="contact-info">
           <div className="contact">
             <i className="fas fa-phone"></i>
-            <span>Contact us: 911</span>
+            <span>{languageStrings.contactUs}: 9943-455-644</span>
           </div>
           <div className="email">
             <i className="fas fa-envelope"></i>
-            <span>hehe@gmail.com</span>
+            <span>{languageStrings.email}</span>
           </div>
         </div>
         <div className="actions">
@@ -99,34 +99,27 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
             </button>
           )}
           <div className="language-toggle">
-            <span>English</span>
-            <input type="checkbox" id="language-switch" />
-            <label htmlFor="language-switch">हिंदी</label>
+            <span>{languageStrings.english}</span>
+            <input
+              type="checkbox"
+              id="language-switch"
+              onChange={toggleLanguage}
+              checked={language === 'hi'}
+            />
+            <label htmlFor="language-switch">{languageStrings.hindi}</label>
           </div>
         </div>
       </div>
       <nav className="navbar">
         <ul>
-          <li
-            className={isActive('/dashboard') ? 'active' : ''}
-            onClick={handleHomeClick}
-          >
-            Home
+          <li className={isActive('/dashboard') ? 'active' : ''} onClick={handleHomeClick}>
+            {languageStrings.home}
           </li>
-          <li className="Navbar__about" onClick={handleAboutClick}>
-            About
-          </li>
-          <li className="Navbar__services" onClick={handleServicesClick}>
-            Services
-          </li>
-          <li className="Navbar__Awareness" onClick={handleAwarenessClick}>
-            Awareness
-          </li>
-          <li
-            className={isActive('/market-place') ? 'active' : ''}
-            onClick={handleMarketPlaceClick}
-          >
-            Market Place
+          <li onClick={handleAboutClick}>{languageStrings.about}</li>
+          <li onClick={handleServicesClick}>{languageStrings.services}</li>
+          <li onClick={handleAwarenessClick}>{languageStrings.awareness}</li>
+          <li className={isActive('/market-place') ? 'active' : ''} onClick={handleMarketPlaceClick}>
+            {languageStrings.marketPlace}
           </li>
         </ul>
       </nav>

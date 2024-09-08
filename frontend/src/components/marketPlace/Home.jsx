@@ -73,7 +73,6 @@ export const Home = () => {
     setFilteredProducts(filteredData);
   };
 
-   console.log(products);
 
   return (
     <div className="shop-page">

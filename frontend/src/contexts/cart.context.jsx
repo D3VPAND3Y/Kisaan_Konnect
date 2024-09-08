@@ -86,7 +86,6 @@ export const CartProvider = ({ children }) => {
     if (user && user.userId) {
       try {
         const response = await axios.get(`http://localhost:3000/get-cart/${user.userId}`);
-        console.log(response.data.cart);
         updateCartItemsReducer(response.data.cart);
 
         dispatch({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: response.data.cart });

@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../styles/CropDiseasePrediction.scss'; // Import the SCSS file
 import cropbgImage from '../assets/CropDiseaseImage.png';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CropDiseasePrediction = () => {
+
+  const { languageStrings } = useLanguage();
+
   const [prediction, setPrediction] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -47,7 +51,7 @@ const CropDiseasePrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/predict', {
+      const response = await fetch('http://localhost:3000/predict-crop-disease', {
         method: 'POST',
         body: formData,
       });
@@ -73,8 +77,8 @@ const CropDiseasePrediction = () => {
     <div className="prediction-container">
       <img className="image" src={cropbgImage} alt="Crop Disease" />
       <div className="heading-text">
-        <div className="heading nice-font Heading">Crop Disease Prediction</div>
-        <div className="one-stop">Upload an image and get predictions</div>
+        <div className="heading nice-font Heading">{languageStrings.cdp_heading}</div>
+        <div className="one-stop">{languageStrings.cdp_subhead}</div>
 
         <div className="dropzone-wrapper">
           <div
@@ -83,25 +87,25 @@ const CropDiseasePrediction = () => {
           >
             <input {...getInputProps()} />
             {isDragActive ? (
-              <p>Drop the files here...</p>
+              <p>{languageStrings.cdp_dropzone}</p>
             ) : (
-              <p>Drag n drop an image here, or click to attach a file</p>
+              <p>{languageStrings.cdp_dropzone}</p>
             )}
           </div>
 
           {/* Show image preview if available */}
           {imagePreview && (
             <div className="image-preview">
-              <h3>Uploaded Image:</h3>
+              <h3>{languageStrings.cdp_uploaded}</h3>
               <img src={imagePreview} alt="Uploaded" />
             </div>
           )}
 
-          {isLoading && <p className="loading-text">Loading...</p>}
+          {isLoading && <p className="loading-text">{languageStrings.cdp_loading}</p>}
           {error && <p className="error-text">{error}</p>}
           {prediction && (
             <div className="result-container">
-              <h2>Predicted Class:</h2>
+              <h2>{languageStrings.cdp_predicted}</h2>
               <p className="prediction-result">{getPredictedClass(prediction)}</p>
             </div>
           )}

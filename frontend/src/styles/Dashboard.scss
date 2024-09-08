@@ -1,0 +1,36 @@
+.dashboard_sections{
+    padding-top:130px;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #6caf1c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+  
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .scroll-to-top {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
