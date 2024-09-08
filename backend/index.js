@@ -11,13 +11,16 @@ const {db} = require('./db');
 const {userRoute} = require('./controllers/auth_controller')
 const {productRoute} = require('./controllers/product_route')
 const cartRoute = require('./controllers/cart_route')
-
+const bodyParser = require('body-parser');
+const axios = require('axios');
 
 dotenv.config();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -37,7 +40,7 @@ const upload = multer({ dest: 'frontend/src/models' });
 const modelPath = path.join(__dirname, '../frontend/src/models/model.onnx');
 console.log("Loading model from: ", modelPath);
 
-const cropPredictionPath = path.join(__dirname, '../frontend/src/models/Crop_prediction.onnx');
+const cropPredictionPath = path.join(__dirname, '../frontend/src/models/Crop_prediction_no_zipmap.onnx');
 const fertilizerPath = path.join(__dirname, '../frontend/src/models/random_forest_classifier.onnx');
 console.log("Loading model from: ", cropPredictionPath);
 
@@ -73,97 +76,30 @@ onnx.InferenceSession.create(fertilizerPath)
   });
 
 
-
-
-// Route for Fertilizer Prediction
-app.post('/predict-fertilizer', async (req, res) => {
-  try {
-    const { temperature, humidity, moisture, soilType, cropType, nitrogen, potassium, phosphorous } = req.body;
-    console.log(req.body);
-
-    // Convert categorical variables to numerical values
-    const soilTypeMapping = {
-      'Sandy': 1,
-      'Loamy': 2,
-      'Clay': 3
-    };
-
-    const cropTypeMapping = {
-      'Maize': 1,
-      'Wheat': 2,
-      'Barley': 3
-    };
-
-    const soilTypeEncoded = soilTypeMapping[soilType] || 0; // Default to 0 if unknown
-    const cropTypeEncoded = cropTypeMapping[cropType] || 0; // Default to 0 if unknown
-
-    // Create input tensor based on the received values and encoded categorical values
-    const inputTensor = new onnx.Tensor('float32', Float32Array.from([
-      parseFloat(temperature),
-      parseFloat(humidity),
-      parseFloat(moisture),
-      parseFloat(soilTypeEncoded),
-      parseFloat(cropTypeEncoded),
-      parseFloat(nitrogen),
-      parseFloat(potassium),
-      parseFloat(phosphorous),
-    ]), [1, 8]);
-
-    const feeds = { 'float_input': inputTensor };
-    console.log("Feeds", feeds);
-
-    // Run the model
-    const results = await fertilizerSession.run(feeds);
-    console.log("Results", results);
-
-    // Extract output_label and output_probability from the model results
-    const outputLabelTensor = results['output_label'];  // Ensure this is correct by checking available output names
-    const outputProbabilityTensor = results['output_probability'];  // Ensure this is correct by checking available output names
-
-    if (!outputLabelTensor || !outputProbabilityTensor) {
-      throw new Error("Output tensors are missing");
+  app.post('/predict-fertilizer', async (req, res) => {
+    try {
+      const formData = req.body;
+      const response = await axios.post('http://localhost:3001/predict-fertilizer', formData);
+      res.json(response.data);
+    } catch (error) {
+      console.error('Error forwarding request:', error.message);
+      res.status(500).json({ error: 'Prediction failed' });
     }
+  });
 
-    const outputLabel = outputLabelTensor.data;  // Get the label data
-    const outputProbabilities = outputProbabilityTensor.data;  // Get the probability data
-
-    res.json({ prediction: outputLabel, probabilities: outputProbabilities });
-  } catch (err) {
-    console.error('Error running Fertilizer model:', err);
-    res.status(500).json({ error: 'Prediction failed' });
-  }
-});
-
-
-// Route for Crop Prediction
 app.post('/predict-crop', async (req, res) => {
   try {
-    const { nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall } = req.body;
-    console.log("Input Names: ", cropSession.inputNames);
-    console.log("Input Types: ", cropSession.inputTypes);
-    console.log("Output Names: ", cropSession.outputNames);
-    console.log("Output Types: ", cropSession.outputTypes);
-    console.log(cropSession)
-
-    // Create input tensor based on the received values
-    const inputTensor = new onnx.Tensor('float32', Float32Array.from([
-      nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall,
-    ]), [1, 7]); // Adjust dimensions to [1, 7] based on model input shape
-    console.log(inputTensor);
-
-    const feeds = { 'float_input': inputTensor }; // Adjust 'input.1' based on model's input name
-    console.log("feeds",feeds);
-    const results = await cropSession.run(feeds);
-    console.log("Results", results);
-    const outputTensor = results['output_label']; // Adjust output tensor name based on your model
-    const outputData = outputTensor.data;
-
-    res.json({ prediction: outputData });
-  } catch (err) {
-    console.error('Error running Crop model:', err);
-    res.status(500).json({ error: 'Prediction failed' });
+      const response = await axios.post('http://localhost:3001/predict-crop', req.body);
+      console.log(response.data);
+      res.json(response.data);
+  } catch (error) {
+      console.error('Error predicting crop:', error);
+      res.status(500).json({ error: 'Prediction failed' });
   }
 });
+
+
+
 
 // Route for Crop Disease Prediction (using image input)
 app.post('/predict-crop-disease', upload.single('image'), async (req, res) => {
