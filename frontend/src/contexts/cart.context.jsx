@@ -160,8 +160,6 @@ export const CartProvider = ({ children }) => {
 
   const clearItemFromCart = (cartItemToClear) => {
     const newCartItems = clearCartItem(cartItems, cartItemToClear);
-    console.log(cartItemToClear);
-    console.log(cartItems);
     if(token && user){
       axios.post(`http://localhost:3000/clear-item-from-cart`, {productId: cartItemToClear._id, userId:user.userId}, {headers
       : {

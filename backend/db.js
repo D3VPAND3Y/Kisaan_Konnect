@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const dbConnect = mongoose
   .connect(
-    "mongodb://localhost:27017/Kisaan_Konnect",
+    "mongodb+srv://ayush123:ayush123@cluster0.kpwm74z.mongodb.net/Kisaan_DB",
   )
   .then((val, err) => {
     if (err) throw err;

@@ -12,10 +12,10 @@ import { Home } from './components/marketPlace/Home';
 import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
 import Checkout from './components/marketPlace/Checkout';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute
 
-
-
-function App() {
+function Layout() {
+  const location = useLocation();
   const noFooterRoutes = ['/signin', '/signup', '/forgot-password'];
   const noNavbarRoutes = ['/signin', '/signup', '/forgot-password'];
 
@@ -23,22 +23,62 @@ function App() {
   const introRef = useRef(null);
   const servicesRef = useRef(null);
   const carouselRef = useRef(null);
+
   return (
-    <Router>
-      {!noFooterRoutes.includes(window.location.pathname) && <Navbar heroRef={heroRef} introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef}/>}
+    <>
+      {!noNavbarRoutes.includes(location.pathname) && (
+        <Navbar
+          heroRef={heroRef}
+          introRef={introRef}
+          servicesRef={servicesRef}
+          carouselRef={carouselRef}
+        />
+      )}
       <Routes>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard heroRef={heroRef} introRef={introRef} servicesRef={servicesRef} carouselRef={carouselRef} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard
+              heroRef={heroRef}
+              introRef={introRef}
+              servicesRef={servicesRef}
+              carouselRef={carouselRef}
+            />
+          }
+        />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
         <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
         <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
-        <Route path="/market-place" element={<Home />} />
-        <Route path='checkout' element={<Checkout />} />
+        <Route
+          path="/market-place"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-      {!noNavbarRoutes.includes(window.location.pathname) && <Footer />}
+      {!noFooterRoutes.includes(location.pathname) && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Layout />
     </Router>
   );
 }
