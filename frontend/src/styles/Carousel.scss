@@ -1,93 +1,111 @@
-.carousel-section {
-    text-align: center;
-    margin-top: 2rem;
-  
-    .carousel-heading {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #6caf1c; // A greenish color to match the theme
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-    }
-}
-  
-.carousel {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.awareness_page__carousel-section {
+  text-align: center;
+  margin-top: 2rem;
 
-    @media (max-width: 930px) {
-        max-width: 80%;
+  .awareness_page__carousel-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #6caf1c; // A greenish color to match the theme
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+}
+
+.awareness_page__carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 930px) {
+      max-width: 80%;
+  }
+
+  .awareness_page__carousel-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out; // Transition for smooth sliding
+  }
+
+  .awareness_page__carousel-slide {
+    min-width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    text-align: center;
+
+    &.active {
+      opacity: 1;
     }
-  
-    .carousel-content {
-      display: flex;
-      transition: transform 0.5s ease-in-out; // Transition for smooth sliding
+
+    .awareness_page__carousel-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-bottom: 2px solid #6caf1c;
     }
-  
-    .carousel-slide {
-      min-width: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      text-align: center;
-  
-      &.active {
-        opacity: 1;
+
+    .awareness_page__carousel-text {
+      padding: 20px;
+      background-color: #fff;
+
+      h2 {
+        font-size: 1.8rem;
+        color: #333;
       }
-  
-      .carousel-image {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-bottom: 2px solid #6caf1c;
-      }
-  
-      .carousel-text {
-        padding: 20px;
-        background-color: #fff;
-  
-        h2 {
-          font-size: 1.8rem;
-          color: #333;
-        }
-  
-        p {
-          font-size: 1rem;
-          color: #666;
-          margin-top: 10px;
-        }
-      }
-    }
-  
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 2rem;
-      border-radius: 50%;
-      z-index: 2;
-  
-      &.prev {
-        left: 10px;
-      }
-  
-      &.next {
-        right: 10px;
-      }
-  
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.7);
+
+      p {
+        font-size: 1rem;
+        color: #666;
+        margin-top: 10px;
       }
     }
   }
+
+  .awareness_page__carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    z-index: 2;
+
+    &.awareness_page__prev {
+      left: 10px;
+    }
+
+    &.awareness_page__next {
+      right: 10px;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .awareness_page__carousel-section {
+      .awareness_page__carousel-heading {
+          font-size: 1.5rem;
+      }
+
+      .awareness_page__carousel-text {
+          h2 {
+              font-size: 1.3rem;
+          }
+
+          p {
+              font-size: 1rem;
+          }
+      }
+  }
+}

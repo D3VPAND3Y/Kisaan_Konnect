@@ -49,30 +49,30 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="carousel-section">
-      <h1 className="carousel-heading">🌾 {languageStrings.latestNewsHeading} 🌾</h1>
-      <div className="carousel">
+    <div className="awareness_page__carousel-section">
+      <h1 className="awareness_page__carousel-heading">🌾 {languageStrings.latestNewsHeading} 🌾</h1>
+      <div className="awareness_page__carousel">
         <div
-          className="carousel-content"
+          className="awareness_page__carousel-content"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {newsData.map((news, index) => (
             <div
               key={news.id}
-              className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
+              className={`awareness_page__carousel-slide ${index === currentSlide ? 'active' : ''}`}
             >
-              <img src={news.image} alt={languageStrings[news.titleKey]} className="carousel-image" />
-              <div className="carousel-text">
+              <img src={news.image} alt={languageStrings[news.titleKey]} className="awareness_page__carousel-image" />
+              <div className="awareness_page__carousel-text">
                 <h2>{languageStrings[news.titleKey]}</h2>
                 <p>{languageStrings[news.descriptionKey]}</p>
               </div>
             </div>
           ))}
         </div>
-        <button className="carousel-btn prev" onClick={prevSlide}>
+        <button className="awareness_page__carousel-btn awareness_page__prev" onClick={prevSlide}>
           &#10094;
         </button>
-        <button className="carousel-btn next" onClick={nextSlide}>
+        <button className="awareness_page__carousel-btn awareness_page__next" onClick={nextSlide}>
           &#10095;
         </button>
       </div>

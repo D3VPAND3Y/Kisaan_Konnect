@@ -5,8 +5,8 @@ const Product = require('../models/product_model');
 const cartRoute = express.Router();
 
 cartRoute.post('/add-to-cart', async (req, res) => {
-    const { userId, productId, quantity, name } = req.body;
-
+    const { userId, productId, quantity, name,imageUrl } = req.body;
+    console.log(req.body);
     try {
       const user = await User.findById(userId);
       if (!user) {
@@ -17,6 +17,7 @@ cartRoute.post('/add-to-cart', async (req, res) => {
         return res.status(404).json({ message: 'Product not found' });
       }
       const product = productCategory.items.find(item => item._id.toString() === productId);
+
       if (!product) {
         return res.status(404).json({ message: 'Product not found in the items array' });
       }
@@ -30,6 +31,7 @@ cartRoute.post('/add-to-cart', async (req, res) => {
           name: name,
           quantity: quantity,
           price: product.price,
+          imageUrl: imageUrl
         });
       }
       await user.save();
@@ -69,6 +71,7 @@ cartRoute.post('/remove-from-cart', async (req, res) => {
       }
 
       const cartItem = user.cart[cartItemIndex];
+      console.log(cartItem);
 
       if (cartItem.quantity > 1) {
         user.cart[cartItemIndex].quantity -= 1;
@@ -93,7 +96,7 @@ cartRoute.post('/remove-from-cart', async (req, res) => {
         return res.status(404).json({ message: 'User not found' });
       }
       const cartItemIndex = user.cart.findIndex(item => item._id.toString() === productId.toString());
-      
+
       if (cartItemIndex === -1) {
         return res.status(404).json({ message: 'Item not found in cart' });
       }

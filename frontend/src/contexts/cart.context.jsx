@@ -129,9 +129,8 @@ export const CartProvider = ({ children }) => {
 
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
-    console.log(productToAdd);
     if(token && user){
-      axios.post(`http://localhost:3000/add-to-cart`, {productId: productToAdd._id, quantity: 1,userId:user.userId,name:productToAdd.name}, {headers
+      axios.post(`http://localhost:3000/add-to-cart`, {productId: productToAdd._id, quantity: 1,userId:user.userId,name:productToAdd.name,imageUrl:productToAdd.imageUrl}, {headers
       : {Authorization: `Bearer ${token}`}})
       .then(res => {
         console.log(res.data);
@@ -160,8 +159,6 @@ export const CartProvider = ({ children }) => {
 
   const clearItemFromCart = (cartItemToClear) => {
     const newCartItems = clearCartItem(cartItems, cartItemToClear);
-    console.log(cartItemToClear);
-    console.log(cartItems);
     if(token && user){
       axios.post(`http://localhost:3000/clear-item-from-cart`, {productId: cartItemToClear._id, userId:user.userId}, {headers
       : {

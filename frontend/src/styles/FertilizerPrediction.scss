@@ -1,127 +1,149 @@
-.bg-image{
-    width: 100vw;
-    height: auto;
-    -webkit-user-drag: none;
-    user-select: none;
-    object-fit: cover;
-    position: absolute;
-    top:0;
-    z-index: 0;
+.fertilizerPred_page__bg-image {
+  width: 100vw;
+  height: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  top: 130px;
 }
 
-.prediction-container {
+.fertilizerPred_page__prediction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  top: 130px;
+  min-height: 100vh; /* Ensure the container takes full viewport height */
+  padding-bottom: 6rem; /* Add padding at the bottom to prevent overlap */
+
+  .fertilizerPred_page__fp-h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2b2d42;
+    text-align: center;
+    z-index: 999;
+    font-family: "Covered By Your Grace", cursive;
+    font-size: 6rem;
+    color: white;
+    position: relative;
+    top: 130px;
+  }
+
+  @media (max-width: 768px) {
+    .fertilizerPred_page__fp-h1 {
+      font-size: 4rem;
+    }
+  }
+
+  .fertilizerPred_page__Fert_pred_desc {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2b2d42;
+    margin-bottom: 2rem;
+    text-align: center;
+    z-index: 999;
+    font-family: "Covered By Your Grace", cursive;
+    color: white;
+    position: relative;
+    top: 130px;
+  }
+
+  .fertilizerPred_page__fertilizer-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 2rem;
-    background-color: #f9f9f9;
-    top:130px;
-  
-    h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #2b2d42;
-      margin-bottom: 2rem;
-      text-align: center;
-      z-index: 999;
-      font-family: "Covered By Your Grace", cursive;
-      font-size: 6rem;
-      color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    margin-bottom: 4rem; /* Extra margin to ensure space between form and footer */
+    position: relative;
+    top: 130px;
+
+    .fertilizerPred_page__form-group {
+      margin-bottom: 1rem;
+      width: 100%;
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #2b2d42;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #333;
+      }
     }
 
-    .Fert_pred_desc{
-        font-size: 2rem;
-        font-weight: bold;
-        color: #2b2d42;
-        margin-bottom: 2rem;
-        text-align: center;
-        z-index: 999;
-        font-family: "Covered By Your Grace", cursive;
-        color: white;
-    }
-  
-    .fertilizer-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 500px;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-  
-      .form-group {
-        margin-bottom: 1rem;
-        width: 100%;
-  
-        label {
-          display: block;
-          margin-bottom: 0.5rem;
-          font-weight: 600;
-          color: #2b2d42;
-        }
-  
-        input, select {
-          width: 100%;
-          padding: 0.75rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-size: 1rem;
-          color: #333;
-        }
-      }
-  
-      .submit-btn {
-        padding: 0.75rem 1.5rem;
-        background-color: #2a9d8f;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-  
-        &:hover {
-          background-color: #21867a;
-        }
-      }
-    }
-  
-    .loading-text {
+    .fertilizerPred_page__submit-btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      border-radius: 8px;
       font-size: 1.2rem;
-      color: #f77f00;
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-  
-    .error-text {
-      font-size: 1.2rem;
-      color: #d62828;
-      font-weight: 600;
-      margin-top: 1rem;
-    }
-  
-    .result-container {
-      margin-top: 2rem;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 2px solid #2a9d8f;
-  
-      h2 {
-        font-size: 1.8rem;
-        color: #2b2d42;
-        margin-bottom: 0.5rem;
-      }
-  
-      .prediction-result {
-        font-size: 1.6rem;
-        color: #2a9d8f;
-        font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #21867a;
       }
     }
   }
+
+  .fertilizerPred_page__loading-text {
+    font-size: 1.2rem;
+    color: #f77f00;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .fertilizerPred_page__error-text {
+    font-size: 1.2rem;
+    color: #d62828;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .fertilizerPred_page__result-container {
+    margin-top: 2rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #2a9d8f;
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 1.8rem;
+      color: #2b2d42;
+      margin-bottom: 0.5rem;
+    }
+
+    .fertilizerPred_page__prediction-result {
+      font-size: 1.6rem;
+      color: #2a9d8f;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Ensure footer does not overlap content */
+footer {
+  margin-top: 4rem; /* Add space between the bottom of the content and the footer */
+}

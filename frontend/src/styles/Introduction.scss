@@ -1,158 +1,158 @@
-.agriculture-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    max-width: 1200px; /* Set a maximum width to center the component */
-    margin: 0 auto; /* Center the component horizontally within its parent */
-  
-    .image-section {
-      position: relative;
-      flex: 1;
-  
-      .large-image {
-        width: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-  
-      .small-image {
-        position: absolute;
-        bottom: -20px;
-        left: 20px;
-        width: 40%;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 5px solid white; /* Optional for a border around the small image */
-      }
+.introduction_page__agriculture-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .introduction_page__image-section {
+    position: relative;
+    flex: 1;
+
+    .introduction_page__large-image {
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
     }
-  
-    .text-section {
-      flex: 1;
-      padding-left: 2rem;
-  
-      .introduction {
-        font-family: "Covered By Your Grace", cursive;
-        font-size: 1.5rem;
-        color: #f4a261;
-      }
-  
-      .title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin: 0.5rem 0;
-        color: #333;
-      }
-  
-      .subtitle {
-        font-size: 1.5rem;
-        color: #4caf50;
-        margin-bottom: 1rem;
-      }
-  
-      .description {
-        font-size: 1rem;
-        color: #666;
-        margin-bottom: 2rem;
-      }
-  
-      .features {
+
+    .introduction_page__small-image {
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      width: 40%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white; /* Optional for a border around the small image */
+    }
+  }
+
+  .introduction_page__text-section {
+    flex: 1;
+    padding-left: 2rem;
+
+    .introduction_page__introduction {
+      font-family: "Covered By Your Grace", cursive;
+      font-size: 1.5rem;
+      color: #f4a261;
+    }
+
+    .introduction_page__title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    .introduction_page__subtitle {
+      font-size: 1.5rem;
+      color: #4caf50;
+      margin-bottom: 1rem;
+    }
+
+    .introduction_page__description {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .introduction_page__features {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+
+      .introduction_page__feature {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        max-width: 500px;
-  
-        .feature {
-          display: flex;
-          align-items: center;
-  
-          .icon {
-            margin-right: 10px;
-            font-size: 2rem;
-            color: #f4a261;
-          }
-  
-          p {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-          }
+        align-items: center;
+
+        .introduction_page__icon {
+          margin-right: 10px;
+          font-size: 2rem;
+          color: #f4a261;
         }
-      }
-  
-      .benefits {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 2rem;
-  
-        li {
+
+        p {
           font-size: 1rem;
-          color: #4caf50;
-          margin-bottom: 0.5rem;
-        }
-      }
-  
-      .discover-button {
-        background-color: #4caf50;
-        color: white;
-        font-size: 1rem;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-  
-        &:hover {
-          background-color: #45a049;
+          color: #333;
+          font-weight: 500;
         }
       }
     }
-  }
-  
-  @media (max-width: 768px) {
-    .agriculture-section {
-      flex-direction: column;
-      padding: 2rem 1rem;
-  
-      .image-section {
-        display: none; /* Hide images when the screen size is less than 768px */
+
+    .introduction_page__benefits {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+
+      li {
+        font-size: 1rem;
+        color: #4caf50;
+        margin-bottom: 0.5rem;
       }
-  
-      .text-section {
-        flex: none;
-        padding-left: 0;
-  
-        .title {
-          font-size: 2.5rem;
-        }
-  
-        .subtitle {
-          font-size: 1.25rem;
-        }
-  
-        .description {
-          font-size: 0.9rem;
-        }
-  
-        .features {
-          flex-direction: column;
-  
-          .feature {
-            margin-bottom: 1rem;
-  
-            p {
-              font-size: 0.9rem;
-            }
+    }
+
+    .introduction_page__discover-button {
+      background-color: #4caf50;
+      color: white;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .introduction_page__agriculture-section {
+    flex-direction: column;
+    padding: 1rem 3rem;
+
+    .introduction_page__image-section {
+      display: none; /* Hide images when the screen size is less than 768px */
+    }
+
+    .introduction_page__text-section {
+      flex: none;
+      padding-left: 0;
+
+      .introduction_page__title {
+        font-size: 2.5rem;
+      }
+
+      .introduction_page__subtitle {
+        font-size: 1.25rem;
+      }
+
+      .introduction_page__description {
+        font-size: 0.9rem;
+      }
+
+      .introduction_page__features {
+        flex-direction: column;
+
+        .introduction_page__feature {
+          margin-bottom: 1rem;
+
+          p {
+            font-size: 0.9rem;
           }
         }
-  
-        .benefits li {
-          font-size: 0.9rem;
-        }
-  
-        .discover-button {
-          width: 100%;
-        }
+      }
+
+      .introduction_page__benefits li {
+        font-size: 0.9rem;
+      }
+
+      .introduction_page__discover-button {
+        width: 100%;
       }
     }
   }
+}

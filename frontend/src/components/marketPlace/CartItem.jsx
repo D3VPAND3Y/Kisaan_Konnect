@@ -1,5 +1,4 @@
 import './CartItem.scss';
-import Tomato from '../../assets/tomato.png';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cart.context';
 
@@ -8,13 +7,11 @@ const CartItem = ({ cartItem }) => {
   const { clearItemFromCart } = useContext(CartContext);
 
   const handleRemove = () => {
-    console.log('Removing item:', cartItem);
     clearItemFromCart(cartItem);
   };
-
   return (
     <div className='cart-item-container'>
-      <img src={Tomato} alt={`${name}`} />
+      <img src={imageUrl} alt={`${name}`} />
       <div className='item-details'>
         <span className='name'>{name}</span>
         <span className='price'>

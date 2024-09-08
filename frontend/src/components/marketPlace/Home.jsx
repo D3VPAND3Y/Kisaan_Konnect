@@ -8,7 +8,7 @@ import { CartContext } from "../../contexts/cart.context";
 import axios from "axios";
 
 export const Home = () => {
-  const [priceRange, setPriceRange] = useState(500);
+  const [priceRange, setPriceRange] = useState(20000);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const { isCartOpen } = useContext(CartContext);
@@ -29,7 +29,6 @@ export const Home = () => {
     fetchProducts();
   }, []);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0, { behavior: "smooth" });
   }, []);
@@ -109,8 +108,8 @@ export const Home = () => {
             <h3>Price: ₹{priceRange}</h3>
             <input
               type="range"
-              min="20"
-              max="500"
+              min="500"
+              max="20000"
               value={priceRange}
               onChange={handlePriceRangeChange}
             />
@@ -125,7 +124,7 @@ export const Home = () => {
           <div className="shop-page-filter-section">
             <h3>Categories</h3>
             <ul className="shop-page-filter-categories">
-              {["All", "Fruits", "Vegetables", "Grains", "Dairy Products", "Pulses"].map((category) => (
+              {["All", "Fertilizers", "Seeds", "Farm Equipment", "Pesticides", "Irrigation Equipment"].map((category) => (
                 <li
                   key={category}
                   className={category === selectedCategory ? "active-category" : ""}
