@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user_model.js");
 const zod = require("zod");
 const bcrypt = require('bcryptjs');
+const { authMiddleWare } = require("../middlewares/auth_middleware.js");
 
 const userRoute = express.Router();
 
@@ -117,6 +118,24 @@ userRoute.post("/signin", async (req, res) => {
         });
     }
 });
+
+// get User by token 
+userRoute.get('/token' , authMiddleWare,  async (req , res) => {
+    try {
+        const userid = req.userid ;
+
+        const user = await User.findById(userid) ;
+        if(!user) return res.status(404).json({
+            message : "User not found"
+        });
+
+        return res.status(200).json({
+            user : user ,
+        })
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+})
 
 // Dummy OTP Route
 userRoute.post('/send-otp', async (req, res) => {
