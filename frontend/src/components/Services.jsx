@@ -1,7 +1,7 @@
 import '../styles/Services.scss';
-import agricultureImg from '../assets/image.png';  // Replace with actual image paths
-import organicImg from '../assets/image.png';
-import vegetablesImg from '../assets/image.png';
+import agricultureImg from '../assets/cropDisease.jpg';  // Replace with actual image paths
+import organicImg from '../assets/crop.jpg';
+import vegetablesImg from '../assets/fert.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
 

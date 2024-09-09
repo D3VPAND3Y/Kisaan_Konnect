@@ -1,0 +1,194 @@
+.awareness-page {
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+  
+    .main-content {
+      flex: 2.5;
+      background-color: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      margin-right: 2rem;
+  
+      .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+      }
+  
+      .post-date {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 1rem;
+  
+        .author {
+          font-weight: bold;
+          color: #555;
+        }
+  
+        .comments {
+          font-weight: normal;
+          color: #aaa;
+          margin-left: 1rem;
+        }
+      }
+  
+      .post-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+  
+      .post-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+    }
+  
+    .sidebar {
+      flex: 1;
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+  
+        input {
+          flex: 1;
+          border: none;
+          padding: 0.8rem;
+          font-size: 1.1rem;
+          outline: none;
+  
+          &::placeholder {
+            color: #bbb;
+          }
+        }
+  
+        button {
+          background-color: #f4a261;
+          border: none;
+          padding: 0.8rem;
+          border-radius: 0 10px 10px 0;
+          cursor: pointer;
+          color: white;
+          font-size: 1.2rem;
+  
+          &:hover {
+            background-color: #e98e3d;
+          }
+        }
+      }
+  
+      .latest-posts, .categories {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: #333;
+        }
+      }
+  
+      .latest-posts {
+        .post-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+  
+          &:last-child {
+            margin-bottom: 0;
+          }
+  
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            margin-right: 1rem;
+          }
+  
+          .post-info {
+            .post-title {
+              font-size: 1rem;
+              font-weight: 700;
+              color: #333;
+            }
+  
+            .post-meta {
+              font-size: 0.9rem;
+              color: #aaa;
+            }
+          }
+        }
+      }
+  
+      .categories {
+        ul {
+          list-style: none;
+          padding: 0;
+  
+          li {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+  
+            &:hover {
+              color: #f4a261;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .awareness-page {
+      padding: 2rem 3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .awareness-page {
+      flex-direction: column;
+      padding: 1rem;
+  
+      .main-content {
+        margin-bottom: 2rem;
+      }
+  
+      .sidebar {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .awareness-page {
+      padding: 1rem;
+    }
+  
+    .post-title {
+      font-size: 1.5rem;
+    }
+  
+    .search-bar input {
+      font-size: 1rem;
+    }
+  }

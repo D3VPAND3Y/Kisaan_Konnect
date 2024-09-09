@@ -202,8 +202,9 @@
 .shop-page-navbar {
     display: flex;
     align-items: center;
-    justify-content: center;
-
+    justify-content: right;
+    gap: 60rem;
+    padding-right: 3rem;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     position: sticky;
@@ -211,6 +212,23 @@
     margin-top: 8rem;
     flex-direction: row;
     flex-wrap: nowrap;
+
+    @media (max-width: 1440px){
+        gap:50rem;
+    }
+
+    @media (max-width: 1024px){
+        gap:30rem;
+    }
+
+    @media (max-width: 768px){
+        gap:15rem;
+    }
+    
+    @media (max-width: 425px){
+        gap: 0;
+        padding-right: 0;
+    }
 }
 
 .shop-page-search input {

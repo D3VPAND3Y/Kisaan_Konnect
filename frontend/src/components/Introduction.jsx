@@ -1,7 +1,7 @@
 import '../styles/Introduction.scss';
-import LargeImage from '../assets/image.png';  // Replace with the actual image path
-import SmallImage from '../assets/image.png';  // Replace with the actual image path
 import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
+import introImg1 from '../assets/introImage1.jpg';
+import introImg2 from '../assets/introImage2.jpg';
 
 const Introduction = () => {
   const { languageStrings } = useLanguage();  // Get the language strings from context
@@ -9,8 +9,8 @@ const Introduction = () => {
   return (
     <div className="introduction_page__agriculture-section">
       <div className="introduction_page__image-section">
-        <img src={LargeImage} alt={languageStrings.largeImageAlt} className="introduction_page__large-image" />
-        <img src={SmallImage} alt={languageStrings.smallImageAlt} className="introduction_page__small-image" />
+        <img src={introImg2} alt={languageStrings.largeImageAlt} className="introduction_page__large-image" />
+        <img src={introImg1} alt={languageStrings.smallImageAlt} className="introduction_page__small-image" />
       </div>
       <div className="introduction_page__text-section">
         <p className="introduction_page__introduction">{languageStrings.introductionTitle}</p>
