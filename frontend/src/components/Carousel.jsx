@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../styles/Carousel.scss';
-import image from '../assets/image.png';
+import reform from '../assets/reforms.avif';
+import climate from '../assets/climate.jpg';
+import organic from '../assets/organic.jpg';
+import subsidy from '../assets/subsidy.jpg';
 import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
 
 const newsData = [
@@ -8,25 +11,25 @@ const newsData = [
     id: 'news-1',
     titleKey: 'newsOneTitle',
     descriptionKey: 'newsOneDescription',
-    image: image,
+    image: reform,
   },
   {
     id: 'news-2',
     titleKey: 'newsTwoTitle',
     descriptionKey: 'newsTwoDescription',
-    image: image,
+    image: climate,
   },
   {
     id: 'news-3',
     titleKey: 'newsThreeTitle',
     descriptionKey: 'newsThreeDescription',
-    image: image,
+    image: organic,
   },
   {
     id: 'news-4',
     titleKey: 'newsFourTitle',
     descriptionKey: 'newsFourDescription',
-    image: image,
+    image: subsidy,
   },
 ];
 

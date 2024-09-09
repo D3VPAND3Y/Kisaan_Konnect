@@ -96,7 +96,7 @@ export const Home = () => {
             onChange={handleSearchChange}
           />
         </div>
-        <CartIcon />
+        <CartIcon className="shop-page-cart-icon"/>
         {isCartOpen && <CartDropdown />}
       </div>
 

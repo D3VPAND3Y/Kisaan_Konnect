@@ -13,6 +13,7 @@ import Navbar from '../src/components/Navbar';
 import { useRef } from 'react';
 import Checkout from './components/marketPlace/Checkout';
 import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute
+import Awareness from './components/Awareness';
 
 function Layout() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function Layout() {
         <Route path="/crop-disease-prediction" element={<CropDiseasePrediction />} />
         <Route path="/what-crop-to-grow" element={<WhatCropToGrow />} />
         <Route path="/fertilizer-prediction" element={<FertilizerPrediction />} />
+        <Route path="/awareness" element={<Awareness />} />
         <Route
           path="/market-place"
           element={
