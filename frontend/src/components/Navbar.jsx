@@ -64,12 +64,7 @@ const Navbar = ({ heroRef, introRef, servicesRef, carouselRef }) => {
   }
 
   const handleAwarenessClick = () => {
-    if (location.pathname !== '/dashboard') {
-      sectionToScroll.current = carouselRef;
-      navigate('/dashboard');
-    } else {
-      scrollToSection(carouselRef);
-    }
+    navigate('/awareness');
   };
 
   const handleLogout = () => {
