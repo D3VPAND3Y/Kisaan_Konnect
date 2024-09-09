@@ -44,7 +44,7 @@ cartRoute.post('/add-to-cart', async (req, res) => {
 cartRoute.get('/get-cart/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    const user = await User.findById(userId).populate('cart.productId');
+    const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
