@@ -163,12 +163,12 @@ const FertilizerPrediction = () => {
       </form>
 
       {error && <p className="fertilizerPred_page__error-text">{error}</p>}
-      {/* {prediction && ( */}
+      {prediction && (
         <div className="fertilizerPred_page__result-container">
           <h2>{languageStrings.fp_recommended}</h2>
           <p className="fertilizerPred_page__prediction-result">{prediction}</p>
         </div>
-      {/* )} */}
+      )}
     </div>
   );
 };

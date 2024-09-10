@@ -1,7 +1,7 @@
 import '../styles/Introduction.scss';
 import { useLanguage } from '../contexts/LanguageContext';  // Import the LanguageContext
-import introImg1 from '../assets/introImage1.jpg';
-import introImg2 from '../assets/introImage2.jpg';
+import introImg1 from '../assets/IntroImage1.jpg';
+import introImg2 from '../assets/IntroImage2.jpg';
 
 const Introduction = () => {
   const { languageStrings } = useLanguage();  // Get the language strings from context
