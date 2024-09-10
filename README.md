@@ -23,3 +23,21 @@ This README provides an overview of the project, including team details, relevan
 - **Live Deployment:** [View Deployment](https://kisaan-konnect-frontend.onrender.com)
 - **Source Code:** [GitHub Repository](https://github.com/D3VPAND3Y/Kisaan_Konnect)
 
+## Run Locally
+
+1. Clone the repo
+
+2. goto frontend directory and run
+
+- `npm i`
+- `npm run dev`
+
+3. Install dependencies in backend directory
+- `pip install flask`
+- `pip install onnx`
+
+4. goto backend directory
+
+- `npm i`
+- `npm run dev`
+- `python app.py`
