@@ -19,7 +19,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/product");
+        const response = await axios.get("https://kisaan-konnect.onrender.com/product");
         setProducts(response.data);
         setFilteredProducts(response.data);
       } catch (error) {

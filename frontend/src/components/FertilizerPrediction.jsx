@@ -42,7 +42,7 @@ const FertilizerPrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/predict-fertilizer', {
+      const response = await fetch('https://kisaan-konnect.onrender.com/predict-fertilizer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
