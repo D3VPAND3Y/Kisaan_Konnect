@@ -79,7 +79,7 @@ onnx.InferenceSession.create(fertilizerPath)
   app.post('/predict-fertilizer', async (req, res) => {
     try {
       const formData = req.body;
-      const response = await axios.post('http://localhost:3001/predict-fertilizer', formData);
+      const response = await axios.post('https://kisaan-konnect-python-backend.onrender.com/predict-fertilizer', formData);
       res.json(response.data);
     } catch (error) {
       console.error('Error forwarding request:', error.message);
@@ -89,7 +89,7 @@ onnx.InferenceSession.create(fertilizerPath)
 
 app.post('/predict-crop', async (req, res) => {
   try {
-      const response = await axios.post('http://localhost:3001/predict-crop', req.body);
+      const response = await axios.post('https://kisaan-konnect-python-backend.onrender.com/predict-crop', req.body);
       console.log(response.data);
       res.json(response.data);
   } catch (error) {

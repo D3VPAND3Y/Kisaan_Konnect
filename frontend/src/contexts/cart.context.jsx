@@ -85,7 +85,7 @@ export const CartProvider = ({ children }) => {
   const loadCartItemsFromDB = async () => {
     if (user && user.userId) {
       try {
-        const response = await axios.get(`http://localhost:3000/get-cart/${user.userId}`);
+        const response = await axios.get(`https://kisaan-konnect.onrender.com/get-cart/${user.userId}`);
         updateCartItemsReducer(response.data.cart);
 
         dispatch({ type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: response.data.cart });
@@ -130,7 +130,7 @@ export const CartProvider = ({ children }) => {
   const addItemToCart = (productToAdd) => {
     const newCartItems = addCartItem(cartItems, productToAdd);
     if(token && user){
-      axios.post(`http://localhost:3000/add-to-cart`, {productId: productToAdd._id, quantity: 1,userId:user.userId,name:productToAdd.name,imageUrl:productToAdd.imageUrl}, {headers
+      axios.post(`https://kisaan-konnect.onrender.com/add-to-cart`, {productId: productToAdd._id, quantity: 1,userId:user.userId,name:productToAdd.name,imageUrl:productToAdd.imageUrl}, {headers
       : {Authorization: `Bearer ${token}`}})
       .then(res => {
         console.log(res.data);
@@ -145,7 +145,7 @@ export const CartProvider = ({ children }) => {
   const removeItemToCart = (cartItemToRemove) => {
     const newCartItems = removeCartItem(cartItems, cartItemToRemove);
     if(token && user){
-      axios.post(`http://localhost:3000/remove-from-cart`, {productId: cartItemToRemove._id, userId:user.userId}, {headers
+      axios.post(`https://kisaan-konnect.onrender.com/remove-from-cart`, {productId: cartItemToRemove._id, userId:user.userId}, {headers
       : {Authorization: `Bearer ${token}`}})
       .then(res => {
         console.log(res.data);
@@ -160,7 +160,7 @@ export const CartProvider = ({ children }) => {
   const clearItemFromCart = (cartItemToClear) => {
     const newCartItems = clearCartItem(cartItems, cartItemToClear);
     if(token && user){
-      axios.post(`http://localhost:3000/clear-item-from-cart`, {productId: cartItemToClear._id, userId:user.userId}, {headers
+      axios.post(`https://kisaan-konnect.onrender.com/clear-item-from-cart`, {productId: cartItemToClear._id, userId:user.userId}, {headers
       : {
         Authorization: `Bearer ${token}`
       }})

@@ -35,7 +35,7 @@ const WhatCropToGrow = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/predict-crop', {
+      const response = await fetch('https://kisaan-konnect.onrender.com/predict-crop', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

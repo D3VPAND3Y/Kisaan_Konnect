@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/user/send-otp', { email });
+      const response = await axios.post('https://kisaan-konnect.onrender.com/user/send-otp', { email });
       console.log('OTP sent:', response.data);
       setStep(2);
     } catch (err) {
@@ -28,7 +28,7 @@ const ForgotPassword = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/user/verify-otp', { email, otp, newPassword });
+      await axios.post('https://kisaan-konnect.onrender.com/user/verify-otp', { email, otp, newPassword });
       console.log('Password reset successful');
       navigate('/signin');
     } catch (err) {

@@ -50,7 +50,7 @@ const CropDiseasePrediction = () => {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/predict-crop-disease', {
+      const response = await fetch('https://kisaan-konnect.onrender.com/predict-crop-disease', {
         method: 'POST',
         body: formData,
       });

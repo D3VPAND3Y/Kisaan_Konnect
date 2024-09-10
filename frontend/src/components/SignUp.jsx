@@ -18,7 +18,7 @@ const Signup = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/user/signup", {
+      await axios.post("https://kisaan-konnect.onrender.com/user/signup", {
         fullName,
         useremail: email,
         password,
